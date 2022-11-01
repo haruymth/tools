@@ -14,7 +14,7 @@ submit.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:
 devtool.lastChild.before(submit);
 
 var hidebutton=document.createElement("button");
-hidebutton.innerHTML="Run!";
+hidebutton.innerHTML="hide";
 hidebutton.id="_Run_button";
 hidebutton.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:5px;margin-bottom:10px;";
 hidebutton.onclick=function(){devtool.remove();}
