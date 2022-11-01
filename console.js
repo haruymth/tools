@@ -10,7 +10,7 @@ devtool.appendChild(textbox);
 var submit=document.createElement("button");
 submit.innerHTML="Run!";
 submit.id="_Run_button";
-submit.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:5px;margin-bottom:10px;"
+submit.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:5px;margin-bottom:10px;";
 devtool.lastChild.before(submit);
 document.body.firstChild.before(devtool);
 (function(){
