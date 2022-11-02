@@ -51,7 +51,7 @@ if(textbox.value){
     document.getElementById('console').appendChild(li);
     var script=document.createElement("script");
     script.id="consolescript";
-    var code=document.getElementById("_console_textbox").value;
+    var code="try{"+document.getElementById("_console_textbox").value+"}catch(e){console.error(e)}";
     script.innerText =code;
     script.textContent = code;
     document.body.appendChild(script);
