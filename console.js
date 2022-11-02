@@ -42,11 +42,6 @@ function test_ivent(e) {
     script.innerText =code ;
     script.textContent = code;
     document.body.appendChild(script);
-    document.getElementById("_console_textbox").remove();
-    var textbox=document.createElement("textarea");
-    textbox.style="border:none;outline: none;position:absolute;bottom:0px;right:0px;width:29.2%;padding:2px;position:fixed";
-    textbox.placeholder=">_";
-    textbox.id="_console_textbox";
-    document.getElementById("console").appendChild(textbox);
+    textbox.value="";
     textbox.focus();
 }
