@@ -27,7 +27,7 @@ document.body.firstChild.before(devtool);
   console.log = function(...args){
     log(...args);
     var li = document.createElement('div');
-    li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;";
+    li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;white-space: pre-wrap;";
     li.innerHTML=args[0];
     document.getElementById('console').appendChild(li);
   }
@@ -37,7 +37,7 @@ document.body.firstChild.before(devtool);
   console.error = function(...args){
     error(...args);
     var li = document.createElement('div');
-    li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;background-color:#f59595";
+    li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;background-color:#f59595;white-space: pre-wrap;";
     li.innerHTML=args[0];
     document.getElementById('console').appendChild(li);
   }
