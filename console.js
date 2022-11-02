@@ -1,24 +1,26 @@
-var devtool=document.createElement("code");
-devtool.style="background-color:#f0f1f2;display:block;height:calc(100% - 40px);width:30%;position:absolute;z-index:9999999;top:0px;right:0px;position:fixed;border-left:solid 2px #c7c8c9;overflow:scroll;word-wrap: break-word;color:#000000;";
+{var devtool=document.createElement("code");
+devtool.style="background-color:#f0f1f2;display:block;height:calc(100% - 34px);width:29.65%;position:absolute;z-index:9999999;top:0px;right:0px;position:fixed;border-left:solid 2px #c7c8c9;overflow:scroll;word-wrap: break-word;color:#000000;";
 devtool.id="console";
-devtool.innerHTML=`<div style="font-weight:600;padding:3px;border-bottom:solid 2px #000000;margin-bottom:5px;">コンソール(開発者ツールが使えない人向け。エラーは表示できません。)</div>`;
+devtool.innerHTML=`<div style="font-weight:600;padding:3px;border-bottom:solid 2px #000000;margin-bottom:5px;position:fixed;background-color:#f0f1f2;">コンソール(開発者ツールが使えない人向け。エラーは表示できません。)</div>`;
 var textbox=document.createElement("textarea");
-textbox.style="border:none;outline: none;position:absolute;bottom:0px;right:0px;width:29.2%;padding:2px;position:fixed;font-size:10px;";
+textbox.style="border:none;outline: none;position:absolute;bottom:0px;right:0px;width:29.2%;padding:2px;position:fixed;font-size:10px;border-radius:0px;background-color:#FFFFFF;border-left:solid 2px #c7c8c9";
 textbox.placeholder=">_";
 textbox.id="_console_textbox";
 devtool.appendChild(textbox);
 var submit=document.createElement("button");
-submit.innerHTML="Run!";
+submit.innerHTML="Run";
 submit.id="_Run_button";
-submit.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:5px;margin-bottom:10px;";
+submit.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:5px;margin-bottom:10px;position:fixed;margin-top:90px;";
 devtool.lastChild.before(submit);
-
 var hidebutton=document.createElement("button");
 hidebutton.innerHTML="hide";
 hidebutton.id="_Run_button";
-hidebutton.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:5px;margin-bottom:10px;";
+hidebutton.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:50px;margin-bottom:10px;position:fixed;margin-top:90px;";
 hidebutton.onclick=function(){devtool.remove();};
 devtool.lastChild.before(hidebutton);
+var space=document.createElement("div");
+space.style="height:120px;";
+devtool.appendChild(space);
 document.body.firstChild.before(devtool);
 (function(){
   const log = console.log;
@@ -30,8 +32,19 @@ document.body.firstChild.before(devtool);
     document.getElementById('console').appendChild(li);
   }
 })();
+(function(){
+  const error = console.error;
+  console.error = function(...args){
+    error(...args);
+    var li = document.createElement('div');
+    li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;background-color:#f59595";
+    li.innerHTML=args[0];
+    document.getElementById('console').appendChild(li);
+  }
+})();
 document.getElementById("_Run_button").addEventListener('click', test_ivent);
 function test_ivent(e) {
+if(textbox.value){
     const li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding:3px;opacity:0.7;";
     li.innerText = document.getElementById("_console_textbox").value;
@@ -39,9 +52,11 @@ function test_ivent(e) {
     var script=document.createElement("script");
     script.id="consolescript";
     var code=document.getElementById("_console_textbox").value;
-    script.innerText =code ;
+    script.innerText =code;
     script.textContent = code;
     document.body.appendChild(script);
     textbox.value="";
     textbox.focus();
+    }
+}
 }
