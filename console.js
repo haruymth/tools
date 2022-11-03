@@ -21,7 +21,15 @@ devtool.lastChild.before(hidebutton);
 var space=document.createElement("div");
 space.style="height:120px;";
 devtool.appendChild(space);
+var outst=document.createElement("div");
+outst.id="output";
+outst.style="width:100%;";
+devtool.appendChild(outst);
 document.body.firstChild.before(devtool);
+var li = document.createElement('div');
+    li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;white-space: pre-wrap;";
+    li.innerHTML="log here...";
+    document.getElementById('output').appendChild(li);
 (function(){
   const log = console.log;
   console.log = function(...args){
@@ -29,10 +37,8 @@ document.body.firstChild.before(devtool);
     var li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;white-space: pre-wrap;";
     li.innerHTML=args[0];
-    document.getElementById('console').appendChild(li);
-    var rect = li.getBoundingClientRect();
-    var elemtop = rect.top + window.pageYOffset;
-    document.documentElement.scrollTop = elemtop;
+    document.getElementById('output').firstChild.before(li);
+   
   }
 })();
 (function(){
@@ -42,10 +48,7 @@ document.body.firstChild.before(devtool);
     var li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;background-color:#f59595;white-space: pre-wrap;";
     li.innerHTML=args[0];
-    document.getElementById('console').appendChild(li);
-    var rect = li.getBoundingClientRect();
-    var elemtop = rect.top + window.pageYOffset;
-    document.documentElement.scrollTop = elemtop;
+    document.getElementById('output').firstChild.before(li);
   }
 })();
 document.getElementById("_Run_button").addEventListener('click', test_ivent);
@@ -54,10 +57,7 @@ if(textbox.value){
     const li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding:3px;opacity:0.7;";
     li.innerText = document.getElementById("_console_textbox").value;
-    document.getElementById('console').appendChild(li);
-    var rect = li.getBoundingClientRect();
-    var elemtop = rect.top + window.pageYOffset;
-    document.documentElement.scrollTop = elemtop;
+    document.getElementById('output').firstChild.before(li);
     var script=document.createElement("script");
     script.id="consolescript";
     var code="try{"+document.getElementById("_console_textbox").value+"}catch(e){console.error(e)}";
