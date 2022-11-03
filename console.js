@@ -3,7 +3,7 @@ devtool.style="background-color:#f0f1f2;display:block;height:calc(100% - 34px);w
 devtool.id="console";
 devtool.innerHTML=`<div style="font-weight:600;padding:3px;border-bottom:solid 2px #000000;margin-bottom:5px;position:fixed;background-color:#f0f1f2;">コンソール(開発者ツールが使えない人向け。エラーは表示できません。)</div>`;
 var textbox=document.createElement("textarea");
-textbox.style="border:none;outline: none;position:absolute;bottom:0px;right:0px;width:29.2%;padding:2px;position:fixed;font-size:10px;border-radius:0px;background-color:#FFFFFF;border-left:solid 2px #c7c8c9;z-index:9999999;";
+textbox.style="border:none;outline: none;position:absolute;bottom:0px;right:0px;width:29.2%;padding:2px;position:fixed;font-size:10px;border-radius:0px;background-color:#FFFFFF;border-left:solid 2px #c7c8c9;z-index:9999999;margin:0px;";
 textbox.placeholder=">_";
 textbox.id="_console_textbox";
 devtool.appendChild(textbox);
@@ -30,6 +30,9 @@ document.body.firstChild.before(devtool);
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;white-space: pre-wrap;";
     li.innerHTML=args[0];
     document.getElementById('console').appendChild(li);
+    var rect = li.getBoundingClientRect();
+    var elemtop = rect.top + window.pageYOffset;
+    document.documentElement.scrollTop = elemtop;
   }
 })();
 (function(){
@@ -40,6 +43,9 @@ document.body.firstChild.before(devtool);
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;background-color:#f59595;white-space: pre-wrap;";
     li.innerHTML=args[0];
     document.getElementById('console').appendChild(li);
+    var rect = li.getBoundingClientRect();
+    var elemtop = rect.top + window.pageYOffset;
+    document.documentElement.scrollTop = elemtop;
   }
 })();
 document.getElementById("_Run_button").addEventListener('click', test_ivent);
@@ -49,6 +55,9 @@ if(textbox.value){
     li.style="border-bottom:solid 1px #c7c8c9;padding:3px;opacity:0.7;";
     li.innerText = document.getElementById("_console_textbox").value;
     document.getElementById('console').appendChild(li);
+    var rect = li.getBoundingClientRect();
+    var elemtop = rect.top + window.pageYOffset;
+    document.documentElement.scrollTop = elemtop;
     var script=document.createElement("script");
     script.id="consolescript";
     var code="try{"+document.getElementById("_console_textbox").value+"}catch(e){console.error(e)}";
