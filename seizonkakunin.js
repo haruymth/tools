@@ -30,7 +30,12 @@
                     aboutMe += aboutme[i] + "\n";
                 }
             }
-            aboutMe += aboutme[i];
+            if (aboutme[i].includes("生存確認")) {
+                    aboutme[i] = `生存確認：${day}`;
+                    aboutMe += aboutme[i];
+                } else {
+                    aboutMe += aboutme[i];
+                }
             fetch(`https://scratch.mit.edu/site-api/users/all/${username}/`, {
                 method: "PUT",
                 body: JSON.stringify({
