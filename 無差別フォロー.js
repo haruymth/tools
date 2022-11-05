@@ -56,25 +56,13 @@ input.addEventListener('change', () => {
 let data=await (await fetch("https://scratch.mit.edu/session",{headers:{"x-requested-with": "XMLHttpRequest"}})).json()
 let count=await (await fetch(`https://api.scratch.mit.edu/users/${followuser}/messages/count`,{headers:{"x-token":data["user"]["token"]}})).json();
 let messages=await (await fetch(`https://api.scratch.mit.edu/users/${followuser}/messages/?limit=${count["count"]}&offset=0`,{headers:{"x-token":data["user"]["token"]}})).json();
+let sessiontoken = (await(await fetch("https://scratch.mit.edu/session/",{headers:{"X-Requested-With":"XMLHttpRequest"}})).json()).user.token;
 
 for(let i=0;i<messages.length;i++){
     if(messages[i]["type"]=="favoriteproject"){
         let username=messages[i]["actor_username"];
         let projectdata=await (await fetch(`https://api.scratch.mit.edu/users/${username}/projects/?limit=1&offset=0`)).json();
         let projectid=projectdata[0]["id"];
-        let token="";{
-                let cookie=document.cookie;
-                cookie=cookie.split(';');
-                let cok=[[],[]];
-                cookie.forEach(function(element){
-                    const elements=element.split("=");
-                    cok[0].push(elements[0]);
-                    cok[1].push(elements[1]);
-                });
-                token=cok[1][cok[0].indexOf(' scratchcsrftoken')];
-            }
-        let sessiontoken = (await(await fetch("https://scratch.mit.edu/session/",{headers:{"X-Requested-With":"XMLHttpRequest"}})).json()).user.token;
-        let user = (await(await fetch("https://scratch.mit.edu/session/",{headers:{"X-Requested-With":"XMLHttpRequest"}})).json()).user.username;
         fetch(`https://api.scratch.mit.edu/proxy/projects/${projectid}/favorites/user/${followuser}`,{
         method: "POST",
         headers:{
@@ -91,19 +79,6 @@ for(let i=0;i<messages.length;i++){
         let username=messages[i]["actor_username"];
         let projectdata=await (await fetch(`https://api.scratch.mit.edu/users/${username}/projects/?limit=1&offset=0`)).json();
         let projectid=projectdata[0]["id"];
-        let token="";{
-                let cookie=document.cookie;
-                cookie=cookie.split(';');
-                let cok=[[],[]];
-                cookie.forEach(function(element){
-                    const elements=element.split("=");
-                    cok[0].push(elements[0]);
-                    cok[1].push(elements[1]);
-                });
-                token=cok[1][cok[0].indexOf(' scratchcsrftoken')];
-            }
-        let sessiontoken = (await(await fetch("https://scratch.mit.edu/session/",{headers:{"X-Requested-With":"XMLHttpRequest"}})).json()).user.token;
-        let user = (await(await fetch("https://scratch.mit.edu/session/",{headers:{"X-Requested-With":"XMLHttpRequest"}})).json()).user.username;
         fetch(`https://api.scratch.mit.edu/proxy/projects/${projectid}/loves/user/${followuser}`,{
         method: "POST",
         headers:{
