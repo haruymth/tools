@@ -12,3 +12,5 @@ jsとかで作ったツールを公開してます
 javascript:{let aa=document.createElement("script");aa.src="https://haru-ymth.github.io/tools/seizonkakunin.js";document.body.appendChild(aa);}
 ```
 です。
+## 無差別フォロー.js
+ユーザー名を縦に並べたテキストファイルを選択して使用するユーザー名を入力して何人目から始めるか入力すれば30秒ごとにフォローできる（フォローしたらすぐ外すっていうプログラム（外しても相手に通知行くからそれでフォロバしてもらえればおｋ））（30秒なのは429エラー回避）
