@@ -7,10 +7,10 @@ input.addEventListener('change', () => {
     for(file of input.files){
         reader.readAsText(file, 'UTF-8');
         reader.onload = ()=> {
-            let followuser = prompt("ユーザー名は何で行きますか？");
+            let followuser = prompt("ユーザー名は何で行きますか？").toLowerCase();
             const flw = async (index) => {
             let dat=await (await fetch("https://scratch.mit.edu/session",{headers:{"x-requested-with": "XMLHttpRequest"}})).json();
-            if(dat["user"]["username"]==followuser){
+            if(dat["user"]["username"].toLowerCase()==followuser){
             let token="";
             {
                 let cookie=document.cookie;
@@ -63,7 +63,7 @@ for(let i=0;i<messages.length;i++){
         let username=messages[i]["actor_username"];
         let projectdata=await (await fetch(`https://api.scratch.mit.edu/users/${username}/projects/?limit=1&offset=0`)).json();
         let projectid=projectdata[0]["id"];
-        fetch(`https://api.scratch.mit.edu/proxy/projects/${projectid}/favorites/user/${followuser}`,{
+        let favorite=await fetch(`https://api.scratch.mit.edu/proxy/projects/${projectid}/favorites/user/${followuser}`,{
         method: "POST",
         headers:{
             'X-CSRFToken': token,
@@ -72,14 +72,18 @@ for(let i=0;i<messages.length;i++){
         },
         credentials: 'include'
         });
-        console.log(`${username}さんに⭐を返しました。`);
+        if(favorite.status==200){
+            console.log(`${username}さんに⭐を返しました。`);
+        }else{
+            console.log(`${username}さんに⭐を返せなかったヨ！`);
+        }
 
     }
     if(messages[i]["type"]=="loveproject"){
         let username=messages[i]["actor_username"];
         let projectdata=await (await fetch(`https://api.scratch.mit.edu/users/${username}/projects/?limit=1&offset=0`)).json();
         let projectid=projectdata[0]["id"];
-        fetch(`https://api.scratch.mit.edu/proxy/projects/${projectid}/loves/user/${followuser}`,{
+        let love=await fetch(`https://api.scratch.mit.edu/proxy/projects/${projectid}/loves/user/${followuser}`,{
         method: "POST",
         headers:{
             'X-CSRFToken': token,
@@ -88,22 +92,17 @@ for(let i=0;i<messages.length;i++){
         },
         credentials: 'include'
         });
-        
-        console.log(`${username}さんに❤を返しました。`);
+        if(love.status==200){
+            console.log(`${username}さんに❤を返しました。`);
+        }else{
+            console.log(`${username}さんに❤を返せなかったヨ！`);
+        }
     }
     if(messages[i]["type"]=="followuser"){
         let username=messages[i]["actor_username"];
         console.log(`🙆${username}さんにフォローされました！`)
     }
 }
-fetch(`https://scratch.mit.edu/site-api/messages/messages-clear/`,{
-        method: "POST",
-        headers:{
-            'X-CSRFToken': token,
-            "x-token":sessiontoken,
-            "x-requested-with": "XMLHttpRequest"
-        }
-        });
             }
             else{
                 console.log(`今は${dat["user"]["username"]}でログインしているからフォローできないよ。`);
