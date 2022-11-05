@@ -1,11 +1,11 @@
 async function func(){
     const getuser=document.getElementsByClassName("box-head")[0];
     const urname=getuser.getElementsByTagName("a")[1];
-    const username=username.innerText;
+    const username=urname.innerText;
     urname.style.display="none";
     const data=getuser.innerText;
-    const followercount=data.replace(/[^0-9]/g, '');
-    username.removeAttribute("style");
+    const followerCount=data.replace(/[^0-9]/g, '');
+    urname.removeAttribute("style");
     console.log(urname);
     console.log(followerCount);
     
@@ -35,3 +35,4 @@ async function func(){
     URL.revokeObjectURL(url);
 }
 func();
+//一部参考：Xx_Freezer_xX
