@@ -48,9 +48,9 @@ input.addEventListener('change', () => {
             await fetch(`https://api.scratch.mit.edu/proxy/projects/${_projectid}/favorites/user/${followuser}`,{method: "POST",headers:{'X-CSRFToken': _token,"x-token":_sessiontoken,"x-requested-with": "XMLHttpRequest"},credentials: 'include'});
             let kaku=await fetch(`https://api.scratch.mit.edu/proxy/projects/${_projectid}/loves/user/${followuser}`,{method: "POST",headers:{'X-CSRFToken': _token,"x-token":_sessiontoken,"x-requested-with": "XMLHttpRequest"},credentials: 'include'});
             if(kaku.status===200){
-                console.log(`${prom[index]}のプロジェクトに❤と★をつけたぞ(${_projectid})`);
+                console.log(`${prom[index]}のプロジェクトに❤と⭐をつけたぞ(${_projectid})`);
             }else{
-                console.log(`${prom[index]}のプロジェクトには❤と★をつけられなかったヨ！(${_projectid})${kaku.status},${`https://api.scratch.mit.edu/proxy/projects/${_projectid}/loves/user/${followuser}`}`);
+                console.log(`${prom[index]}のプロジェクトには❤と⭐をつけられなかったヨ！(${_projectid})${kaku.status},${`https://api.scratch.mit.edu/proxy/projects/${_projectid}/loves/user/${followuser}`}`);
             }
                 
 let data=await (await fetch("https://scratch.mit.edu/session",{headers:{"x-requested-with": "XMLHttpRequest"}})).json()
@@ -72,7 +72,7 @@ for(let i=0;i<messages.length;i++){
         },
         credentials: 'include'
         });
-        console.log(`${username}さんに★を返しました。`);
+        console.log(`${username}さんに⭐を返しました。`);
 
     }
     if(messages[i]["type"]=="loveproject"){
