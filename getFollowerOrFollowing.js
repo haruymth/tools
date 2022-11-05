@@ -10,6 +10,7 @@ async function func(){
     console.log(followerCount);
     
     let userList="";
+    let taihi=document.getElementsByClassName("media-grid")[0].innerHTML;
     document.getElementsByClassName("media-grid")[0].innerHTML="";
     for(let page=0;page<followerCount;page+=60){
         var res = await (await fetch(`${location.href}?page=${Math.ceil(page/60)+1}`)).text();
@@ -23,6 +24,7 @@ async function func(){
         box.remove();
         console.log(`Loading... (${page}/${followerCount})`)
     }
+    document.getElementsByClassName("media-grid")[0].innerHTML=taihi;
     console.log(`Loading... (${followerCount}/${followerCount})`)
     const link=new Blob([userList],{type:"text/plain"});
     const url = URL.createObjectURL(link);
