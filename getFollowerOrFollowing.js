@@ -1,9 +1,15 @@
 async function func(){
-    const followerCount=document.getElementsByClassName("box-head")[0].innerText.replace(/[^0-9]/g, '');
-    const username=document.getElementsByClassName("box-head")[0].getElementsByTagName("a")[1].innerText;
-    let userList="";
+    const getuser=document.getElementsByClassName("box-head")[0];
+    const urname=getuser.getElementsByTagName("a")[1];
+    const username=username.innerText;
+    urname.style.display="none";
+    const data=getuser.innerText;
+    const followercount=data.replace(/[^0-9]/g, '');
+    username.removeAttribute("style");
+    console.log(urname);
     console.log(followerCount);
-    console.log(username);
+    
+    let userList="";
     document.getElementsByClassName("media-grid")[0].innerHTML="";
     for(let page=0;page<followerCount;page+=60){
         var res = await (await fetch(`${location.href}?page=${Math.ceil(page/60)+1}`)).text();
