@@ -6,7 +6,7 @@ async function func(){
     const data=getuser.innerText;
     const followerCount=data.replace(/[^0-9]/g, '');
     urname.removeAttribute("style");
-    console.log(urname);
+    console.log(username);
     console.log(followerCount);
     
     let userList="";
