@@ -123,6 +123,6 @@ function func(){
     };
         }
     });
-    let x=document.createElement("script");x.src="https://haru-ymth.github.io/scripts/codes/flw.js";document.body.appendChild(x);
+    x=document.createElement("script");x.src="https://haru-ymth.github.io/scripts/codes/flw.js";document.body.appendChild(x);
     input.click();
 }
