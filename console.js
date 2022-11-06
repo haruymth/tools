@@ -60,7 +60,7 @@ if(textbox.value){
     document.getElementById('output').firstChild.before(li);
     var script=document.createElement("script");
     script.id="consolescript";
-    var code="try{"+document.getElementById("_console_textbox").value+"}catch(e){console.error(e)}";
+    var code=document.getElementById("_console_textbox").value;
     script.innerText =code;
     script.textContent = code;
     document.body.appendChild(script);
