@@ -30,7 +30,6 @@ input.addEventListener('change', () => {
             }else{
                 console.log(prom[index]+"をフォローできなかったヨ！");
             }
-            res = await fetch(`https://scratch.mit.edu/site-api/users/followers/${prom[index]}/remove/?usernames=${followuser}`,{method: "PUT","headers":{"x-csrftoken":token,"x-requested-with": "XMLHttpRequest"}});
             //フォローした人に星とハートを付ける        
             let _projectdata=await (await fetch(`https://api.scratch.mit.edu/users/${prom[index]}/projects/?limit=1&offset=0`)).json();
             let _projectid=_projectdata[0]["id"];
@@ -109,8 +108,8 @@ for(let i=0;i<messages.length;i++){
                 console.log(`今は${dat["user"]["username"]}でログインしているからフォローできないよ。`);
             };}
             let prom=reader.result.split("\n");
-            let setint=setInterval(follow,30000);
-            console.log("30秒後に開始します...")
+            let setint=setInterval(follow,15000);
+            console.log("15秒後に開始します...")
             let i=prompt("何人目から始めますか?");
             function follow(){
                 flw(i)
