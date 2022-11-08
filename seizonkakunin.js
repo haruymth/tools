@@ -14,15 +14,15 @@
     let year=data.getFullYear();
     let month=data.getMonth()+1;
     let day = data.getDate();
-    if(day.length==1){
+    if(String(day).length==1){
         day="0"+day;
     }
     let hour=data.getHours();
-    if(hour.length==1){
+    if(String(hour).length==1){
         hour="0"+hour;
     }
     let minutes=data.getMinutes();
-    if(minutes.length==1){
+    if(String(minutes).length==1){
         minutes="0"+minutes;
     }
     let date = `${year}/${month}/${day} ${hour}:${minutes}`;
