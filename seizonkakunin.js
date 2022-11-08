@@ -11,7 +11,21 @@
     }
     let token = getCookieValue("scratchcsrftoken");
     let data = new Date();
-    let day = `${data.getFullYear()}/${data.getMonth()+1}/${data.getDate()} ${data.getHours()}:${data.getMinutes()}`;
+    let year=data.getFullYear();
+    let month=data.getMonth()+1;
+    let day = data.getDate();
+    if(day.length==1){
+        day="0"+day;
+    }
+    let hour=data.getHours();
+    if(hour.length==1){
+        hour="0"+hour;
+    }
+    let minutes=data.getMinutes();
+    if(minutes.length==1){
+        minutes="0"+minutes;
+    }
+    let date = `${year}/${month}/${day} ${hour}:${minutes}`;
     let aboutMe = ``;
     fetch("https://scratch.mit.edu/session/", {
         headers: {
@@ -24,14 +38,14 @@
             let i = 0;
             for (i = 0; i < aboutme.length - 1; i++) {
                 if (aboutme[i].includes("生存確認")) {
-                    aboutme[i] = `生存確認：${day}`;
+                    aboutme[i] = `生存確認：${date}`;
                     aboutMe += aboutme[i] + "\n";
                 } else {
                     aboutMe += aboutme[i] + "\n";
                 }
             }
             if (aboutme[i].includes("生存確認")) {
-                    aboutme[i] = `生存確認：${day}`;
+                    aboutme[i] = `生存確認：${date}`;
                     aboutMe += aboutme[i];
                 } else {
                     aboutMe += aboutme[i];
