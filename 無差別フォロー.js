@@ -31,7 +31,7 @@ input.addEventListener('change', () => {
                 console.log(prom[index]+"をフォローできなかったヨ！");
             }
             //フォローした人に星とハートを付ける        
-            let _projectdata=await (await fetch(`https://api.scratch.mit.edu/users/${prom[index]}/projects/?limit=1&offset=0`)).json();
+            /*let _projectdata=await (await fetch(`https://api.scratch.mit.edu/users/${prom[index]}/projects/?limit=1&offset=0`)).json();
             let _projectid=_projectdata[0]["id"];
             let _token="";{
                     let cookie=document.cookie;
@@ -102,7 +102,7 @@ for(let i=0;i<messages.length;i++){
         let username=messages[i]["actor_username"];
         console.log(`🙆${username}さんにフォローされました！`)
     }
-}
+}*/
             }
             else{
                 console.log(`今は${dat["user"]["username"]}でログインしているからフォローできないよ。`);
