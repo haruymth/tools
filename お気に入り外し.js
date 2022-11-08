@@ -36,9 +36,10 @@ input.addEventListener('change', () => {
                 console.log(`今は${dat["user"]["username"]}でログインしているから⭐を外せないよ。`);
             };}
             let prom=reader.result.split("\n");
-            let setint=setInterval(follow,100);
+            let setint=setInterval(follow,15000);
             let i=prompt("何個目から外しますか?");
             let limit=prompt("最後から何個目まで外しますか？");
+            console.log("15秒後に開始します...");
             function follow(){
                 flw(i)
                 i++;
