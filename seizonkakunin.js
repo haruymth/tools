@@ -13,6 +13,9 @@
     let data = new Date();
     let year=data.getFullYear();
     let month=data.getMonth()+1;
+    if(String(month).length==1){
+        month="0"+month;
+    }
     let day = data.getDate();
     if(String(day).length==1){
         day="0"+day;
