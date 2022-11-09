@@ -18,7 +18,7 @@ async function func(){
         document.body.appendChild(box);
         var box2=document.getElementsByClassName("user thumb item");
         for(let i=0;i<box2.length;i++){
-            userList+=box2[i].innerHTML.split("/")[2]+"\n";
+            userList=box2[i].innerHTML.split("/")[2]+"\n"+userList;
         }
         box.remove();
         console.log(`Loading... (${page}/${followerCount})`)
