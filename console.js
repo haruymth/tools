@@ -61,8 +61,18 @@ if(textbox.value){
     var script=document.createElement("script");
     script.id="consolescript";
     var code=document.getElementById("_console_textbox").value;
-    script.innerText =code;
-    script.textContent = code;
+    script.innerText =`
+    try{
+    ${code}
+    }catch(e){
+    console.error(e);
+    }`;
+    script.textContent =`
+    try{
+    ${code}
+    }catch(e){
+    console.error(e);
+    }`;
     document.body.appendChild(script);
     textbox.value="";
     textbox.focus();
