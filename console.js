@@ -1,7 +1,7 @@
 {var devtool=document.createElement("code");
 devtool.style="background-color:#f0f1f2;display:block;height:calc(100% - 34px);width:29.65%;position:absolute;z-index:9999999;top:0px;right:0px;position:fixed;border-left:solid 2px #c7c8c9;overflow:scroll;word-wrap: break-word;color:#000000;";
 devtool.id="console";
-devtool.innerHTML=`<div style="font-weight:600;padding:3px;border-bottom:solid 2px #000000;margin-bottom:5px;position:fixed;background-color:#f0f1f2;">コンソール(開発者ツールが使えない人向け。エラーは表示できません。)</div>`;
+devtool.innerHTML=`<div style="font-weight:600;padding:3px;border-bottom:solid 2px #000000;margin-bottom:5px;position:fixed;background-color:#f0f1f2;">Console</div>`;
 var textbox=document.createElement("textarea");
 textbox.style="border:none;outline: none;position:absolute;bottom:0px;right:0px;width:29.2%;padding:2px;position:fixed;font-size:10px;border-radius:0px;background-color:#FFFFFF;border-left:solid 2px #c7c8c9;z-index:9999999;margin:0px;";
 textbox.placeholder=">_";
