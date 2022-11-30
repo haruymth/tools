@@ -32,14 +32,14 @@
 	function addAccount(username,password){
 		let list=accountList();
 	  list.accountList.push({username:username,password:password});
-	  document.cookie="accountlist="+JSON.stringify(list)+";path=/;"
+	  document.cookie="accountlist="+JSON.stringify(list)+";path=/;max-age=2147483647;"
 	  document.getElementById("switch_background").remove();
 	  createGUI();
 	}
 	function delAccount(i){
 		let list=accountList();
 	  list.accountList.splice(i,1);
-	  document.cookie="accountlist="+JSON.stringify(list)+";path=/;"
+	  document.cookie="accountlist="+JSON.stringify(list)+";path=/;max-age=2147483647;"
 	  document.getElementById("switch_background").remove();
 	  createGUI();
 	}
