@@ -1,4 +1,5 @@
-{async function switchAccount(username,password){
+{
+async function switchAccount(username,password){
     let token="";{let cookie=document.cookie;cookie=cookie.split(';');let cok=[[],[]];cookie.forEach(function(element){const elements=element.split("=");cok[0].push(elements[0]);cok[1].push(elements[1]);});token=cok[1][cok[0].indexOf(' scratchcsrftoken')];}
     await fetch("https://scratch.mit.edu/accounts/logout/",{method:"POST","headers":{"x-csrftoken":token}});
     let a=await fetch("https://scratch.mit.edu/accounts/login/",{method:"POST",body:JSON.stringify({"username":username,"password":password,"useMessages":false}),"headers":{"x-csrftoken":token,"x-requested-with": "XMLHttpRequest"}});
@@ -34,7 +35,13 @@ function addAccount(username,password){
   document.cookie="accountlist="+JSON.stringify(list)+";path=/;"
   document.getElementById("switch_background").remove();
   createGUI();
-  console.log("accountlist="+JSON.stringify(list)+";path=/;")
+}
+function delAccount(i){
+	let list=accountList();
+  list.accountList.splice(i,1);
+  document.cookie="accountlist="+JSON.stringify(list)+";path=/;"
+  document.getElementById("switch_background").remove();
+  createGUI();
 }
 function createGUI(){
 	let background=document.createElement("div");
@@ -51,9 +58,20 @@ function createGUI(){
   	let oneAccount=document.createElement("div");
     oneAccount.innerHTML=list.accountList[i].username;
     oneAccount.class=list.accountList[i].password;
-    oneAccount.style="padding:5px;margin-left:10px;border-bottom:solid 1px #424242;cursor:pointer;width:80%";
+    oneAccount.style="display:inline-block;padding:5px;margin-left:10px;border-bottom:solid 1px #424242;cursor:pointer;width:80%";
     oneAccount.onclick=async function(){await switchAccount(this.innerHTML,this.class);location.reload()}
     background.appendChild(oneAccount);
+    let deleteButton=document.createElement("span");
+  deleteButton.innerHTML="x";
+  deleteButton.style="display:inline-block;position:absolute;right:13%;user-select:none;padding-top:3px;padding-right:10px;cursor:pointer;";
+  deleteButton.onclick= function(){
+  if(confirm("本当にアカウントを除外しますか？")){
+  let elements=this.previousElementSibling.parentNode;
+  elements = [].slice.call( elements );
+  delAccount(elements.indexOf(this.parent));
+  }
+  };
+  oneAccount.after(deleteButton);
   }
   let addButton=document.createElement("div");
   addButton.style="display:block;width:90%;margin:5%;margin-right:5%;margin-left:5px;text-align:center;cursor:pointer;font-weight:550;";
