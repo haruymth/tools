@@ -53,7 +53,7 @@ function createGUI(){
     oneAccount.innerHTML=list.accountList[i].username;
     oneAccount.class=list.accountList[i].password;
     oneAccount.style="padding:5px;margin-left:10px;border-bottom:solid 1px #424242;cursor:pointer;width:80%";
-    oneAccount.onclick=function(){switchAccount(this.innerHTML,this.class);location.reload()}
+    oneAccount.onclick=async function(){switchAccount(this.innerHTML,this.class);location.reload()}
     background.appendChild(oneAccount);
   }
   let addButton=document.createElement("div");
