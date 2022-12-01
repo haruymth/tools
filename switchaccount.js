@@ -60,12 +60,11 @@
 		for(let i=0;i<list.accountList.length;i++){
 			let oneAccount=document.createElement("div");
 			oneAccount.innerHTML=list.accountList[i].username;
-			oneAccount.name=list.accountList[i].password;
 			oneAccount.classList.add("switch_oneaccount");
-			oneAccount.dataset.index=i;
+			oneAccount.dataset.password=list.accountList[i].password;
 			oneAccount.style="display:inline-block;padding:5px;margin-left:10px;border-bottom:solid 1px #424242;cursor:pointer;width:80%;vertical-align:middle;";
 			oneAccount.onclick=async function(){
-				await switchAccount(this.innerHTML,this.name);location.reload()
+				await switchAccount(this.textContent,this.dataset.password);location.reload()
 			};
 			background.appendChild(oneAccount);
 			let deleteButton=document.createElement("span");
