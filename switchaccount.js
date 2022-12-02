@@ -46,7 +46,7 @@
 	}
 	function createGUI(){
 		let background=document.createElement("div");
-	  	background.style="background-color:#2a2a2a;height:400px;width:300px;position:absolute;top:10px;left:10px;position:fixed;border-radius:5px;color:#ffffff;font-size:15px;overflow:scroll;z-index:2147483646";
+	  	background.style="background-color:#2a2a2a;height:400px;width:300px;position:absolute;top:10px;left:10px;position:fixed;border-radius:5px;color:#ffffff;font-size:15px;overflow:auto;z-index:2147483646";
 	  	background.id="switch_background";
 		document.body.appendChild(background);
 		let closeButton=document.createElement("span");
