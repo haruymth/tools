@@ -4,18 +4,18 @@
 	    await fetch("https://scratch.mit.edu/accounts/logout/",{method:"POST","headers":{"x-csrftoken":token}});
 	    let a=await fetch("https://scratch.mit.edu/accounts/login/",{method:"POST",body:JSON.stringify({"username":username,"password":password,"useMessages":false}),"headers":{"x-csrftoken":token,"x-requested-with": "XMLHttpRequest"}});
 	    if(a.status==200){
-			return true;
+			  return true;
 	    }else{
-			return false;
+			  return false;
 	    }
 	}
 	function getCookieValue(key) {
 	    const cookies = document.cookie.split(';');
 	    for (let cookie of cookies) {
-			var cookiesArray = cookie.split('='); 
-			if (cookiesArray[0].trim() == key.trim()) { 
-				return cookiesArray[1];
-			}
+        var cookiesArray = cookie.split('='); 
+        if (cookiesArray[0].trim() == key.trim()) { 
+          return cookiesArray[1];
+        }
 	    }
 	    return '';
 	}
@@ -23,14 +23,14 @@
 	function accountList(){
 		let list;
 		if(getCookieValue("accountlist")==''){
-			list={accountList:[]}
+			  list={accountList:[]}
 	  	}else{
-			list=JSON.parse(getCookieValue("accountlist"));
+			  list=JSON.parse(getCookieValue("accountlist"));
 	  	}
 		return list;
 	}
 	async function addAccount(username,password){
-		let images=await (await fetch("//api.scratch.mit.edu/users/"+username)).json()
+		let images=await (await fetch("//api.scratch.mit.edu/users/"+username)).json();
 		let list=accountList();
 		list.accountList.push({username:images.username,password:password,icon:images.id});
 		document.cookie="accountlist="+JSON.stringify(list)+";path=/;max-age=2147483647;"
@@ -46,8 +46,8 @@
 	}
 	function createGUI(){
 		let background=document.createElement("div");
-	  	background.style="background-color:#2a2a2a;height:400px;width:300px;position:absolute;top:10px;left:10px;position:fixed;border-radius:5px;color:#ffffff;font-size:15px;overflow:auto;z-index:2147483646";
-	  	background.id="switch_background";
+    background.style="background-color:#2a2a2a;height:400px;width:300px;position:absolute;top:10px;left:10px;position:fixed;border-radius:5px;color:#ffffff;font-size:15px;overflow:auto;z-index:2147483646";
+    background.id="switch_background";
 		document.body.appendChild(background);
 		let closeButton=document.createElement("span");
 		closeButton.innerHTML="x";
@@ -85,7 +85,7 @@
 			icon.src="https://uploads.scratch.mit.edu/get_image/user/"+list.accountList[i].icon+"_32x32.png";
 			icon.style="vertical-align:middle;margin:2px;"
 			oneAccount.insertBefore(icon,oneAccount.firstChild);
-	  	}
+	  }
 		let addButton=document.createElement("div");
 		addButton.style="display:block;width:90%;margin:5%;margin-right:5%;margin-left:5px;text-align:center;cursor:pointer;font-weight:550;";
 		addButton.innerHTML="アカウントを追加する";
