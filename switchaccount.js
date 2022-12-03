@@ -125,6 +125,6 @@
 		};
 		background.appendChild(addButton);
 	}
-	createGUI()
+	await createGUI()
 	getMessagesCount();
 }
