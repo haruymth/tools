@@ -125,6 +125,9 @@
 		};
 		background.appendChild(addButton);
 	}
+	async function func(){
 	await createGUI()
 	getMessagesCount();
+	}
+	func()
 }
