@@ -49,7 +49,7 @@
 		let elementList=document.getElementsByClassName("switch_oneaccount");
 		for(let i=0;i<elementList.length;i++){
 			let urname=elementList[i].textContent;
-			let count=await (await fetch("//api.scratch.mit.edu/users/"+urname+"/messages/count")).json()
+			let count=await (await fetch("//api.scratch.mit.edu/users/"+urname+"/messages/count",{cache: "no-store"})).json()
 			let messagesBatch=elementList[i].nextElementSibling;
 			messagesBatch.innerHTML=count.count;
 		}
