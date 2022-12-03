@@ -94,7 +94,7 @@
 				if(confirm("本当にアカウントを除外しますか？")){
 					let elements=document.getElementsByClassName("switch_oneaccount");
 					elements = [].slice.call(elements);
-					delAccount(elements.indexOf(this.previousElementSibling));
+					delAccount(elements.indexOf(this.previousElementSibling.previousElementSibling));
 				}
 			};
 			oneAccount.after(deleteButton);
