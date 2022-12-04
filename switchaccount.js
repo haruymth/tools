@@ -36,14 +36,14 @@
 		list.accountList.push({username:images.username,password:password,icon:images.id});
 		document.cookie="accountlist="+JSON.stringify(list)+";path=/;max-age=2147483647;"
 		document.getElementById("switch_background").remove();
-		createGUI();
+		await createGUI();
 	}
-	function delAccount(i){
+	async function delAccount(i){
 		let list=accountList();
 		list.accountList.splice(i,1);
 		document.cookie="accountlist="+JSON.stringify(list)+";path=/;max-age=2147483647;"
 		document.getElementById("switch_background").remove();
-		createGUI();
+		await createGUI();
 	}
 	async function getMessagesCount(){
 		let elementList=document.getElementsByClassName("switch_oneaccount");
@@ -90,11 +90,12 @@
 			let deleteButton=document.createElement("span");
             deleteButton.innerHTML="x";
 			deleteButton.style="display:inline-block;position:absolute;right:13%;user-select:none;padding-top:3px;padding-right:10px;cursor:pointer;";
-			deleteButton.onclick= function(){
+			deleteButton.onclick= async function(){
 				if(confirm("本当にアカウントを除外しますか？")){
 					let elements=document.getElementsByClassName("switch_oneaccount");
 					elements = [].slice.call(elements);
-					delAccount(elements.indexOf(this.previousElementSibling.previousElementSibling));
+					await delAccount(elements.indexOf(this.previousElementSibling.previousElementSibling));
+					getMessagesCount();
 				}
 			};
 			oneAccount.after(deleteButton);
@@ -118,10 +119,10 @@
 		let addButton=document.createElement("div");
 		addButton.style="display:block;width:90%;margin:5%;margin-right:5%;margin-left:5px;text-align:center;cursor:pointer;font-weight:550;";
 		addButton.innerHTML="アカウントを追加する";
-		addButton.onclick=function(){
+		addButton.onclick=async function(){
 			let newUsername=prompt("ユーザー名を入力");
 			let newPassword=prompt("パスワードを入力");
-			addAccount(newUsername,newPassword)
+			await addAccount(newUsername,newPassword);
 		};
 		background.appendChild(addButton);
 	}
