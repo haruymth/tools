@@ -52,6 +52,10 @@
 			let count=await (await fetch("//api.scratch.mit.edu/users/"+urname+"/messages/count",{cache: "no-store"})).json()
 			let messagesBatch=elementList[i].nextElementSibling;
 			messagesBatch.innerHTML=count.count;
+			messagesBatch.style.opacity="0.5";
+			if(count.count>0){
+				messagesBatch.style.opacity="1";
+			}
 		}
 	}
 	const messages=setInterval(getMessagesCount,5000);
