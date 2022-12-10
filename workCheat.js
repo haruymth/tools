@@ -12,6 +12,8 @@ async function cheat(){
       
         return queries;
       }
+    let corces=await (await fetch(`https://api.lifeistech-lesson.jp/api/players/courses`)).json();
+    
     let res=await (await fetch(`https://player.lifeistech-lesson.jp/api/lesson_player/scenario?scenario_path=${getA().scenario_path}&project_name=${getA().project_name}`)).json();
     //console.log(res)
     let id=res.steps[res.steps.length-1].stepId-1;
