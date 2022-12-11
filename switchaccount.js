@@ -2,7 +2,6 @@
 	async function switchAccount(username,password){
 	    let token="";{let cookie=document.cookie;cookie=cookie.split(';');let cok=[[],[]];cookie.forEach(function(element){const elements=element.split("=");cok[0].push(elements[0]);cok[1].push(elements[1]);});token=cok[1][cok[0].indexOf(' scratchcsrftoken')];}
 	    await fetch("https://scratch.mit.edu/accounts/logout/",{method:"POST","headers":{"x-csrftoken":token}});
-	    var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
 	    let a=await fetch("https://scratch.mit.edu/accounts/login/",{method:"POST",body:JSON.stringify({"username":username,"password":password,"useMessages":false}),"headers":{"x-csrftoken":token,"x-requested-with": "XMLHttpRequest"}});
 	    let sessionid=await a.json()
 	    if(a.status==200){
@@ -64,6 +63,7 @@
 		let background=document.createElement("div");
     	background.style="background-color:#2a2a2a;height:400px;width:300px;position:absolute;top:10px;left:10px;position:fixed;border-radius:5px;color:#ffffff;font-size:15px;overflow:auto;z-index:2147483646";
     	background.id="switch_background";
+		let src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
 		document.body.appendChild(background);
 		let closeButton=document.createElement("span");
 		closeButton.innerHTML="x";
