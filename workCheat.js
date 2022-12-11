@@ -45,7 +45,7 @@ async function cheat(){
             }
         }
     }
-    document.cookie=lessonList.toString()+";path=/;max-age=32421454";
+    document.cookie="lessonlist="+lessonList.toString()+";path=/;max-age=32421454";
     alert("次に、ページに飛ぶので、そこで、ブックマークレットの2つめをクリックしてね");
     let newUrl=`https://player.lifeistech-lesson.jp/player/step?project_name=${lessonList[0][0]}&scenario_path=${lessonList[0][1]}&step_id=1`
     location.href=newUrl;
