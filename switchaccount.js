@@ -112,7 +112,7 @@
 			icon.style="vertical-align:middle;margin:2px;"
 			oneAccount.insertBefore(icon,oneAccount.firstChild);
 			let messagesBatch=document.createElement("span");
-			messagesBatch.style="opacity:0.5;display:inline-block;border-radius:50%;color:#ffffff;background-color:#ffb300;height:18px;width:18px;position:absolute;right:70px;text-align:center;vertical-align:baseline;margin-top:10px;cursor:pointer";
+			messagesBatch.style="opacity:0.5;display:inline-block;border-radius:9px;color:#ffffff;background-color:#ffb300;height:18px;width:18px;position:absolute;right:70px;text-align:center;vertical-align:baseline;margin-top:10px;cursor:pointer";
 			messagesBatch.onclick=async function(){
 				let Username=this.previousElementSibling.textContent;
 				let Password=this.previousElementSibling.dataset.password;
