@@ -28,32 +28,27 @@ async function cheat(){
         }
     })).json();
     let lessonList=[];
-    console.log(corces)
     for(let a=0;a<corces.courses.length;a++){
         let corce1=corces.courses[a].chapters;
-        console.log(corce1)
         for(let b=0;b<corce1.length;b++){
             let corce2=corce1[b];
-            console.log(corce2)
             for(let c=0;c<corce2.lessons.length;c++){
                    let corce3=corce2.lessons[c];
-                   console.log(corce3)
-                    lessonList.push([corce2.id,corce3.id]);
+                    let pay=await (await fetch(`https://api.lifeistech-lesson.jp/api/players/chapters/${corce2.id}/lessons/${corce3.id}`,{
+                        headers:{
+                            "authorization":"Bearer "+getCookieValue("mozermovie")
+                        }
+                    })).json();
+                    let projectName=pay.start_links[0].player_url.split("project_name=")[1].split("&")[0];
+                    let scenarioPath=pay.start_links[0].player_url.split("scenario_path=")[1].split("&")[0];
+                    lessonList.push([projectName,scenarioPath]);
             }
         }
     }
-    for(let i=0;i<lessonList;i++){
-        await fetch("https://player.lifeistech-lesson.jp/api/lesson_player/lesson_finished",{
-        headers:{
-            "credentials":"include"
-        }})
-    }
-    console.log(lessonList)
-    /*let res=await (await fetch(`https://player.lifeistech-lesson.jp/api/lesson_player/scenario?scenario_path=${getA().scenario_path}&project_name=${getA().project_name}`)).json();
-    //console.log(res)
-    let id=res.steps[res.steps.length-1].stepId-1;
-    let newUrl=`https://player.lifeistech-lesson.jp/player/step?project_name=${getA().project_name}&scenario_path=${getA().scenario_path}&step_id=${id}`
-    location.href=newUrl*/
+    document.cookie=lessonList.toString()+";path=/;max-age=32421454";
+    alert("次に、ページに飛ぶので、そこで、ブックマークレットの2つめをクリックしてね");
+    let newUrl=`https://player.lifeistech-lesson.jp/player/step?project_name=${lessonList[0][0]}&scenario_path=${lessonList[0][1]}&step_id=1`
+    location.href=newUrl;
 
 }
 cheat()
