@@ -5,6 +5,7 @@
             alert("Please click on Scratch projects");
             return
         }
+        var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
         let res=(await (await fetch("/session",{headers:{"x-requested-with": "XMLHttpRequest"}})).json()).user.token;
         let hoge=await (await fetch(`https://api.scratch.mit.edu/projects/${projectid}/`,{headers:{"x-token":res}})).json();
         projecttoken=hoge.project_token
