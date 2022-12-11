@@ -21,5 +21,6 @@ async function cheat2(){
         body:JSON.stringify({"project_name":lessonList[i],"scenario_path":lessonList[i+1],"finish_status":{"quiz_all_answered":true,"no_hint_cleared":true,"noStatusUp":false}})
         })
     }
+  alert("これでほぼすべてのチャプターが終わっているはずだよ！ホームページを見てみてね！");
 }
 cheat2()
