@@ -122,7 +122,7 @@
 			oneAccount.after(messagesBatch);
 	  }
 		let addButton=document.createElement("div");
-		addButton.style="display:block;width:90%;margin:5%;margin-right:5%;margin-left:5px;text-align:center;cursor:pointer;font-weight:550;";
+		addButton.style="display:block;width:auto;margin:5%;margin-right:5%;margin-left:5px;text-align:center;cursor:pointer;font-weight:550;";
 		addButton.innerHTML="アカウントを追加する";
 		addButton.onclick=async function(){
 			let newUsername=prompt("ユーザー名を入力");
