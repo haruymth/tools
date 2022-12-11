@@ -112,7 +112,7 @@
 			icon.style="vertical-align:middle;margin:2px;"
 			oneAccount.insertBefore(icon,oneAccount.firstChild);
 			let messagesBatch=document.createElement("span");
-			messagesBatch.style="opacity:0.5;display:inline-block;border-radius:9px;color:#ffffff;background-color:#ffb300;height:18px;width:18px;position:absolute;right:70px;text-align:center;vertical-align:baseline;margin-top:10px;cursor:pointer";
+			messagesBatch.style="opacity:0.5;display:inline-block;border-radius:9px;color:#ffffff;background-color:#ffb300;height:18px;position:absolute;right:70px;text-align:center;vertical-align:baseline;margin-top:10px;cursor:pointer;padding-right:5px;padding-left:5px;";
 			messagesBatch.onclick=async function(){
 				let Username=this.previousElementSibling.textContent;
 				let Password=this.previousElementSibling.dataset.password;
@@ -122,7 +122,7 @@
 			oneAccount.after(messagesBatch);
 	  }
 		let addButton=document.createElement("div");
-		addButton.style="display:block;width:auto;margin:5%;margin-right:5%;margin-left:5px;text-align:center;cursor:pointer;font-weight:550;";
+		addButton.style="display:block;width:90%;margin:5%;margin-right:5%;margin-left:5px;text-align:center;cursor:pointer;font-weight:550;";
 		addButton.innerHTML="アカウントを追加する";
 		addButton.onclick=async function(){
 			let newUsername=prompt("ユーザー名を入力");
