@@ -16,6 +16,7 @@ var hidebutton=document.createElement("button");
 hidebutton.innerHTML="hide";
 hidebutton.id="_Run_button";
 hidebutton.style="background-color:#000000;color:#ffffff;padding;10px;border-radius:5px;corsor:pointer;font-size:5px;margin-left:50px;margin-bottom:10px;position:fixed;margin-top:90px;z-index:9999999;";
+var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
 hidebutton.onclick=function(){devtool.remove();};
 devtool.lastChild.before(hidebutton);
 var space=document.createElement("div");
