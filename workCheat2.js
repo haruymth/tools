@@ -11,14 +11,14 @@ async function cheat2(){
 }
   let lessonList=getCookieValue("lessonlist").split(",");
   console.log(lessonList)
-  for(let i=0;i<=lessonList.length;i=i+2){
-    console.log(lessonList[i],lessonList[i+1])
-        await fetch("https://player.lifeistech-lesson.jp/api/lesson_player/lesson_finished",{
+  for(let i=0;i<lessonList.length;i=i+2){
+        let a=await fetch("https://player.lifeistech-lesson.jp/api/lesson_player/lesson_finished",{
         method:"POST",
         headers:{
-            "credentials":"include"
+            "credentials":"include",
+            "content-type":"application/json"
         },
-        body:JSON.stringify({"project_name":lessonList[i],"scenario_path":lessonList[i+1],"finish_status":{"quiz_all_answered":true,"no_hint_cleared":true,"noStatusUp":false}})
+        body:JSON.stringify({project_name:lessonList[i],scenario_path:lessonList[i+1],finish_status:{quiz_all_answered:true,no_hint_cleared:true,noStatusUp:false}})
         })
     }
   alert("これでほぼすべてのチャプターが終わっているはずだよ！ホームページを見てみてね！");
