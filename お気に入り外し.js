@@ -24,7 +24,6 @@ input.addEventListener('change', () => {
                 });
                 token=cok[1][cok[0].indexOf(' scratchcsrftoken')];
             }
-            var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
             let sessiontoken = (await(await fetch("https://scratch.mit.edu/session/",{headers:{"X-Requested-With":"XMLHttpRequest"}})).json()).user.token;
             let res=await fetch(`https://api.scratch.mit.edu/proxy/projects/${prom[i]}/favorites/user/${followuser}`,{method: "DELETE",headers:{'X-CSRFToken': token,"x-token":sessiontoken,"x-requested-with": "XMLHttpRequest"},credentials: 'include'});
             if(res.status==200){
