@@ -36,7 +36,7 @@ var li = document.createElement('div');
     log(...args);
     var li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;white-space: pre-wrap;";
-    li.textContent=args[0];
+    li.innerHTML=args[0];
     document.getElementById('output').firstChild.before(li);
    
   }
