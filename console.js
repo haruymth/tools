@@ -36,7 +36,7 @@ var li = document.createElement('div');
     log(...args);
     var li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;white-space: pre-wrap;";
-    li.innerText=args[0];
+    li.textContent=args[0];
     document.getElementById('output').firstChild.before(li);
    
   }
@@ -47,7 +47,7 @@ var li = document.createElement('div');
     error(...args);
     var li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;background-color:#f59595;white-space: pre-wrap;";
-    li.innerText=args[0];
+    li.textContent=args[0];
     document.getElementById('output').firstChild.before(li);
   }
 })();
