@@ -28,7 +28,7 @@ devtool.appendChild(outst);
 document.body.firstChild.before(devtool);
 var li = document.createElement('div');
     li.style="border-bottom:solid 1px #c7c8c9;padding-left:10px;white-space: pre-wrap;";
-    li.="log here...";
+    li.textContent="log here...";
     document.getElementById('output').appendChild(li);
 (function(){
   const log = console.log;
