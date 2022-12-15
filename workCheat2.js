@@ -21,6 +21,7 @@ async function cheat2(){
         body:JSON.stringify({project_name:lessonList[i],scenario_path:lessonList[i+1],finish_status:{quiz_all_answered:true,no_hint_cleared:true,noStatusUp:false}})
         })
     }
-  alert("これでほぼすべてのチャプターが終わっているはずだよ！ホームページを見てみてね！");
+  alert("これですべてのレッスンを終了したことにできました。ホームに飛びます。");
+  location.href="https://member.lifeistech-lesson.jp/home";
 }
 cheat2()
