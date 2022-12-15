@@ -1,3 +1,4 @@
+if(location.hostname!=="member.lifeistech-lesson.jp"){location.href="https://member.lifeistech-lesson.jp/home"}
 async function cheat(){
     function getA() {
         var queryStr = window.location.search.slice(1);
