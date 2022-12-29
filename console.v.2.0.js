@@ -2,6 +2,9 @@
 if(document.getElementById("console")!==null){
 	return
 }
+if(document.getElementById("consoleCode")!==null){
+	document.getElementById("consoleCode").remove();
+}
 let style=document.createElement("style");
 style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
 
