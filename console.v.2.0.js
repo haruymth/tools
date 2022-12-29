@@ -10,7 +10,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
 
 #console{
   all:initial;
-  font-size:12px;
+  font-size:13px;
   display:block;
   background-color: #FFFFFF;
   height: 100%;
@@ -32,7 +32,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border:1px #c7c7c7 solid;
   border-left:0;
   font-family: 'Source Code Pro', monospace;
-  font-size:12px;
+  font-size:13px;
 }
 .consolelog{
   all:initial;
@@ -43,7 +43,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border-bottom:1px #c7c7c7 solid;
   white-space: pre-wrap;
   opacity:1;
-  font-size:12px;
+  font-size:13px;
 }
 .consoleerror{
   all:initial;
@@ -54,7 +54,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border-bottom:1px #c7c7c7 solid;
   white-space: pre-wrap;
   opacity:1;
-  font-size:12px;
+  font-size:13px;
   background-color:#ffa1a1;
 }
 .codelog{
@@ -66,7 +66,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border-bottom:1px #c7c7c7 solid;
   white-space: pre-wrap;
   opacity:0.7;
-  font-size:12px;
+  font-size:13px;
 }
 #closeButton{
   display:inline-block;
