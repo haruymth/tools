@@ -26,6 +26,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
 }
 #console * {
   direction: ltr;
+  overflow-wrap:  break-word;
 }
 #codearea{
   all:initial;
@@ -37,6 +38,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border-left:0;
   font-family: 'Source Code Pro', monospace;
   font-size:13px;
+  overflow-wrap:  break-word;
 }
 .consolelog{
   all:initial;
