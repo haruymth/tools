@@ -83,7 +83,7 @@ document.body.appendChild(style);
 function createUI(){
 	let container=document.createElement("div");
   container.id="console";
-  container.style.width=document.body.clientWidth*0.5+"px";
+  container.style.width=document.body.clientWidth*0.25+"px";
   document.body.appendChild(container);
   let codeArea=document.createElement("textArea");
   codeArea.id="codearea";
@@ -93,9 +93,10 @@ function createUI(){
   let close=document.createElement("span");
   close.innerText="X";
   close.id="closeButton";
-  close.style.left=document.body.clientWidth*0.5-2+"px";
+  close.style.left=document.body.clientWidth*0.25-2+"px";
   close.addEventListener("click",function(){
   	document.getElementById("console").remove();
+	document.getElementById("closeButton").remove();
   })
   container.before(close);
   }
