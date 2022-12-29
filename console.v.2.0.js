@@ -121,6 +121,7 @@ function createUI(){
   function keyPress(e){
   	if(e.shiftKey && e.key === 'Enter'){
     	let code=document.getElementById("codearea").value.trim();
+		if(!code)return;
       document.getElementById("codearea").value="";
       document.getElementById("codearea").style.height="auto";
       let codeLog=document.createElement("div");
