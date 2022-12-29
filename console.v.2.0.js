@@ -5,7 +5,7 @@ if(document.getElementById("console")!==null){
 if(document.getElementById("consoleCode")!==null){
 	document.getElementById("consoleCode").remove();
 }
-let id=Math.random();
+let id=Math.random().toString();
 let style=document.createElement("style");
 style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
 #console${id}{
