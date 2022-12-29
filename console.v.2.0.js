@@ -16,8 +16,8 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   height: 100%;
   position:absolute;
   top:0px;
-  left:0px;
-  border-right:#c7c7c7 2px solid;
+  right:0px;
+  border-left:#c7c7c7 2px solid;
   font-family: 'Source Code Pro', monospace;
   z-index:2147483647;
   overflow:scroll;
