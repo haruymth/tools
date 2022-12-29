@@ -108,7 +108,7 @@ function createUI(){
   codeArea.id="codearea";
   codeArea.placeholder="input code here...";
   container.appendChild(codeArea);
-  codeArea.focus()
+  codeArea.focus();
   let close=document.createElement("span");
   close.innerText="X";
   close.id="closeButton";
@@ -116,10 +116,10 @@ function createUI(){
   close.addEventListener("click",function(){
   	document.getElementById("console").remove();
 	document.getElementById("closeButton").remove();
-  })
+  });
   container.before(close);
   }
-  createUI()
+  createUI();
   {
  const textareaEls = document.querySelectorAll("textarea");
 
