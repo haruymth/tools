@@ -5,9 +5,10 @@ if(document.getElementById("console")!==null){
 if(document.getElementById("consoleCode")!==null){
 	document.getElementById("consoleCode").remove();
 }
+let id=Math.random();
 let style=document.createElement("style");
 style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
-#console{
+#console${id}{
   all:initial;
   font-size:13px;
   display:block;
@@ -24,11 +25,11 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   position:fixed;
   direction: rtl;
 }
-#console * {
+#console${id} * {
   direction: ltr;
   overflow-wrap:  break-word;
 }
-#codearea{
+#codearea${id}{
   all:initial;
   resize: none;
   min-height: 10px;
@@ -40,7 +41,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   font-size:13px;
   overflow-wrap:  break-word;
 }
-.consolelog{
+.consolelog${id}{
   all:initial;
   display:block;
   width:100%;
@@ -51,7 +52,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   opacity:1;
   font-size:13px;
 }
-.consoleerror{
+.consoleerror${id}{
   all:initial;
   display:block;
   width:100%;
@@ -63,7 +64,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   font-size:13px;
   background-color:#ffa1a1;
 }
-.codelog{
+.codelog${id}{
   all:initial;
   display:block;
   width:100%;
@@ -74,7 +75,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   opacity:0.7;
   font-size:13px;
 }
-#closeButton{
+#closeButton${id}{
   display:inline-block;
   position:absolute;
   top:0px;
@@ -89,33 +90,33 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   cursor:pointer;
   border:1px #c7c7c7 solid;
 }
-#console::-webkit-scrollbar{
+#console${id}::-webkit-scrollbar{
    width: 10px;
 }
-#console::-webkit-scrollbar-track{
+#console${id}::-webkit-scrollbar-track{
    background-color: #c7c7c7;
 }
-#console::-webkit-scrollbar-thumb{
+#console${id}::-webkit-scrollbar-thumb{
    background-color: #7d7d7d;
 }`;
 document.body.appendChild(style);
 function createUI(){
 	let container=document.createElement("div");
-  container.id="console";
+  container.id="console"+id;
   container.style.width=document.body.clientWidth*0.25+"px";
   document.body.appendChild(container);
   let codeArea=document.createElement("textArea");
-  codeArea.id="codearea";
+  codeArea.id="codearea"+id;
   codeArea.placeholder="input code here...";
   container.appendChild(codeArea);
   codeArea.focus();
   let close=document.createElement("span");
   close.innerText="X";
-  close.id="closeButton";
+  close.id="closeButton"+id;
   close.style.right=document.body.clientWidth*0.25-2+"px";
   close.addEventListener("click",function(){
-  	document.getElementById("console").remove();
-	document.getElementById("closeButton").remove();
+  	document.getElementById("console"+id).remove();
+	document.getElementById("closeButton"+id).remove();
   });
   container.before(close);
   }
@@ -136,17 +137,17 @@ function createUI(){
   document.addEventListener("keyup",keyPress);
   function keyPress(e){
   	if(e.shiftKey && e.key === 'Enter'){
-    	let code=document.getElementById("codearea").value.trim();
+    	let code=document.getElementById("codearea"+id).value.trim();
 		if(!code)return;
-      document.getElementById("codearea").value="";
-      document.getElementById("codearea").style.height="auto";
+      document.getElementById("codearea"+id).value="";
+      document.getElementById("codearea"+id).style.height="auto";
       let codeLog=document.createElement("div");
-      codeLog.setAttribute("class","codelog");
+      codeLog.setAttribute("class","codelog"+id);
       codeLog.innerText=code;
-      let logArea = document.getElementById('console'),
+      let logArea = document.getElementById('console'+id),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-      document.getElementById("codearea").before(codeLog);
+      document.getElementById("codearea"+id).before(codeLog);
       let scriptCode=document.createElement("script");
       scriptCode.textContent=code;
       document.body.appendChild(scriptCode);
@@ -161,11 +162,11 @@ function createUI(){
     log(...args);
     var li = document.createElement('div');
     li.textContent=args[0];
-    li.setAttribute("class","consolelog");
-    let logArea = document.getElementById('console'),
+    li.setAttribute("class","consolelog"+id);
+    let logArea = document.getElementById('console'+id),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-    document.getElementById("codearea").before(li);
+    document.getElementById("codearea"+id).before(li);
     if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
@@ -177,11 +178,11 @@ function createUI(){
     error(...args);
     var li = document.createElement('div');
     li.textContent=args[0];
-    li.setAttribute("class","consoleerror");
-    let logArea = document.getElementById('console'),
+    li.setAttribute("class","consoleerror"+id);
+    let logArea = document.getElementById('console'+id),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-    document.getElementById("codearea").before(li);
+    document.getElementById("codearea"+id).before(li);
     if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
