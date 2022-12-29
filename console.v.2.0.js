@@ -23,7 +23,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
 #codearea{
   all:initial;
   resize: none;
-  min-height: 20px;
+  min-height: 10px;
   width: 100%;
   outline:0;
   border:1px #c7c7c7 solid;
@@ -76,6 +76,8 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   position:fixed;
   font-family: 'Source Code Pro', monospace;
   border-radius:5px;
+  user-select:none;
+  cursor:pointer;
 }`;
 document.body.appendChild(style);
 function createUI(){
@@ -116,6 +118,7 @@ function createUI(){
   	if(e.shiftKey && e.key === 'Enter'){
     	let code=document.getElementById("codearea").value.trim();
       document.getElementById("codearea").value="";
+      document.getElementById("codearea").style.height="auto";
       let codeLog=document.createElement("div");
       codeLog.setAttribute("class","codelog");
       codeLog.innerText=code;
