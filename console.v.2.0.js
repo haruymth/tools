@@ -7,7 +7,6 @@ if(document.getElementById("consoleCode")!==null){
 }
 let style=document.createElement("style");
 style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
-
 #console{
   all:initial;
   font-size:13px;
@@ -21,6 +20,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   font-family: 'Source Code Pro', monospace;
   z-index:2147483647;
   overflow-y: scroll;
+  overflow-x: hidden;
   position:fixed;
   direction: rtl;
 }
@@ -85,15 +85,16 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border-radius:5px;
   user-select:none;
   cursor:pointer;
+  border:1px #c7c7c7 solid;
 }
 #console::-webkit-scrollbar{
    width: 10px;
 }
 #console::-webkit-scrollbar-track{
-   background-color: #7d7d7d;
+   background-color: #c7c7c7;
 }
 #console::-webkit-scrollbar-thumb{
-   background-color: #c7c7c7;
+   background-color: #7d7d7d;
 }`;
 document.body.appendChild(style);
 function createUI(){
@@ -147,7 +148,7 @@ function createUI(){
       let scriptCode=document.createElement("script");
       scriptCode.textContent=code;
       document.body.appendChild(scriptCode);
-      if(logAreaHeight-logAreaTop==logArea.offsetHeight){
+      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
     }
@@ -163,7 +164,7 @@ function createUI(){
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
     document.getElementById("codearea").before(li);
-    if(logAreaHeight-logAreaTop==logArea.offsetHeight){
+    if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
   }
@@ -179,7 +180,7 @@ function createUI(){
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
     document.getElementById("codearea").before(li);
-    if(logAreaHeight-logAreaTop==logArea.offsetHeight){
+    if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
   }
