@@ -81,6 +81,15 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border-radius:5px;
   user-select:none;
   cursor:pointer;
+}
+.console::-webkit-scrollbar{
+   width: 10px;
+}
+.console::-webkit-scrollbar-track{
+   background-color: #7d7d7d;
+}
+.console::-webkit-scrollbar-thumb{
+   background-color: #c7c7c7;
 }`;
 document.body.appendChild(style);
 function createUI(){
