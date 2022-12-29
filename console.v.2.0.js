@@ -75,20 +75,20 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   z-index:2147483646;
   background-color:#ffffff;
   padding:5px;
-  padding-left:10px;
+  padding-right:10px;
   position:fixed;
   font-family: 'Source Code Pro', monospace;
   border-radius:5px;
   user-select:none;
   cursor:pointer;
 }
-.console::-webkit-scrollbar{
+#console::-webkit-scrollbar{
    width: 10px;
 }
-.console::-webkit-scrollbar-track{
+#console::-webkit-scrollbar-track{
    background-color: #7d7d7d;
 }
-.console::-webkit-scrollbar-thumb{
+#console::-webkit-scrollbar-thumb{
    background-color: #c7c7c7;
 }`;
 document.body.appendChild(style);
@@ -105,7 +105,7 @@ function createUI(){
   let close=document.createElement("span");
   close.innerText="X";
   close.id="closeButton";
-  close.style.left=document.body.clientWidth*0.25-2+"px";
+  close.style.right=document.body.clientWidth*0.25-2+"px";
   close.addEventListener("click",function(){
   	document.getElementById("console").remove();
 	document.getElementById("closeButton").remove();
