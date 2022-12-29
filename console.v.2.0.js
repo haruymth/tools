@@ -20,8 +20,12 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   border-left:#c7c7c7 2px solid;
   font-family: 'Source Code Pro', monospace;
   z-index:2147483647;
-  overflow:scroll;
+  overflow-y: scroll;
   position:fixed;
+  direction: rtl;
+}
+#console * {
+  direction: ltr;
 }
 #codearea{
   all:initial;
