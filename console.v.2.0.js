@@ -144,7 +144,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
       logAreaTop = logArea.scrollTop;
       document.getElementById("codearea").before(codeLog);
       let scriptCode=document.createElement("script");
-      scriptCode.textContent="{"+document.getElementById("codearea").value+"}";
+      scriptCode.textContent=`${document.getElementById("codearea").value}`;
       document.body.appendChild(scriptCode);
       if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
