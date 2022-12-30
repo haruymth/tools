@@ -121,12 +121,9 @@ function createUI(){
   }
   createUI()
   {
- const textareaEls = document.querySelectorAll("textarea");
-
-  textareaEls.forEach((textareaEl) => {
-    textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
+ const textareaEl = document.getElementById("codearea");
+textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
     textareaEl.addEventListener("input", setTextareaHeight);
-  });
 
   function setTextareaHeight() {
     this.style.height = "auto";
