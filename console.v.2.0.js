@@ -38,6 +38,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   font-family: 'Source Code Pro', monospace;
   font-size:13px;
   overflow-wrap:  break-word;
+  border-bottom:0;
 }
 .consolelog{
   all:initial;
@@ -107,6 +108,7 @@ function createUI(){
   let codeArea=document.createElement("textArea");
   codeArea.id="codearea";
   codeArea.placeholder="input code here...";
+  codeArea.onkeypress="if(event.keyCode==13){if(event.shiftKey==true){event.returnValue=true}else{event.returnValue=false}}";
   container.appendChild(codeArea);
   codeArea.focus()
   let close=document.createElement("span");
@@ -132,7 +134,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
   }
   document.addEventListener("keyup",keyPress);
   function keyPress(e){
-  	if(e.shiftKey && e.key === 'Enter'){
+  	if(!e.shiftKey && e.key === 'Enter'){
     	let code=document.getElementById("codearea").value.trim();
 		if(!code)return;
     let code2="{"+document.getElementById("codearea").value+"}"
