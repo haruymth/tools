@@ -138,13 +138,13 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
       document.getElementById("codearea").style.height="auto";
       let codeLog=document.createElement("div");
       codeLog.setAttribute("class","codelog");
-      codeLog.innerText="{"+code+"}";
+      codeLog.innerText=code;
       let logArea = document.getElementById('console'),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
       document.getElementById("codearea").before(codeLog);
       let scriptCode=document.createElement("script");
-      scriptCode.textContent=code;
+      scriptCode.textContent="{"+document.getElementById("codearea").value+"}";
       document.body.appendChild(scriptCode);
       if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
