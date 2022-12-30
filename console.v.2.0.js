@@ -138,7 +138,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
       document.getElementById("codearea").style.height="auto";
       let codeLog=document.createElement("div");
       codeLog.setAttribute("class","codelog");
-      codeLog.innerText=code;
+      codeLog.innerText="{"+code+"}";
       let logArea = document.getElementById('console'),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
