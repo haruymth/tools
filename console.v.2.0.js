@@ -96,6 +96,7 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
 }
 #console::-webkit-scrollbar-thumb{
    background-color: #7d7d7d;
+   opacity:0.5;
 }`;
 document.body.appendChild(style);
 function createUI(){
@@ -134,6 +135,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
   	if(e.shiftKey && e.key === 'Enter'){
     	let code=document.getElementById("codearea").value.trim();
 		if(!code)return;
+    let code2="{"+document.getElementById("codearea").value+"}"
       document.getElementById("codearea").value="";
       document.getElementById("codearea").style.height="auto";
       let codeLog=document.createElement("div");
@@ -144,7 +146,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
       logAreaTop = logArea.scrollTop;
       document.getElementById("codearea").before(codeLog);
       let scriptCode=document.createElement("script");
-      scriptCode.textContent=`${document.getElementById("codearea").value}`;
+      scriptCode.textContent=code2;
       document.body.appendChild(scriptCode);
       if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
