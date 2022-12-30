@@ -1,9 +1,8 @@
 (()=>{
 if(document.getElementById("console")!==null){
+	document.getElementById("console").style.right="0px";
+  	document.getElementById("closeButton").style.right=document.body.clientWidth*0.25-2+"px";
 	return
-}
-if(document.getElementById("consoleCode")!==null){
-	document.getElementById("consoleCode").remove();
 }
 let style=document.createElement("style");
 style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
@@ -114,8 +113,8 @@ function createUI(){
   close.id="closeButton";
   close.style.right=document.body.clientWidth*0.25-2+"px";
   close.addEventListener("click",function(){
-  	document.getElementById("console").remove();
-	document.getElementById("closeButton").remove();
+  	document.getElementById("console").style.right="-99999px";
+	document.getElementById("closeButton").style.right="-99999px";
   })
   container.before(close);
   }
