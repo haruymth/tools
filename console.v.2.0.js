@@ -1,7 +1,7 @@
 (()=>{
 if(document.getElementById("console")!==null){
 	document.getElementById("console").style.right="0px";
-  	document.getElementById("closeButton").style.right=document.getElementById("console").style.width-2+"px";
+  	document.getElementById("closeButton").style.right=Number(document.getElementById("console").style.width.replace("px",""))-2+"px";
 	return
 }
 let style=document.createElement("style");
