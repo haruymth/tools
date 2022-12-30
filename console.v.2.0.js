@@ -30,51 +30,42 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
 #codearea{
   all:initial;
   resize: none;
+  position:absolute;
+  right:0px;
   min-height: 10px;
-  width: 100%;
+  width: calc(100% - 15px);
   outline:0;
-  border:1px #c7c7c7 solid;
-  border-left:0;
+  /*border:1px #c7c7c7 solid;
+  border-left:0;*/
   font-family: 'Source Code Pro', monospace;
   font-size:13px;
   overflow-wrap:  break-word;
   border-bottom:0;
 }
-.consolelog{
+.consolelog,.consoleerror,.consolewarn,.codelog{
   all:initial;
   display:block;
-  width:100%;
+  padding-left:15px;
+  width:calc(100% - 15px);
   border-left:0;
+  margin-left:auto;
   font-family: 'Source Code Pro', monospace;
   border-bottom:1px #c7c7c7 solid;
   white-space: pre-wrap;
-  opacity:1;
+  opacity:0.8;
   font-size:13px;
 }
 .consoleerror{
-  all:initial;
-  display:block;
-  width:100%;
-  border-left:0;
-  font-family: 'Source Code Pro', monospace;
-  border-bottom:1px #c7c7c7 solid;
-  white-space: pre-wrap;
-  opacity:1;
-  font-size:13px;
   background-color:#ffa1a1;
 }
+.consolewarn{
+  background-color:#fffca1;
+}
 .codelog{
-  all:initial;
-  display:block;
-  width:100%;
-  border-left:0;
-  font-family: 'Source Code Pro', monospace;
-  border-bottom:1px #c7c7c7 solid;
-  white-space: pre-wrap;
-  opacity:0.7;
-  font-size:13px;
+  opacity:1;
 }
 #closeButton{
+	all:initial;
   display:inline-block;
   position:absolute;
   top:0px;
@@ -88,6 +79,19 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   user-select:none;
   cursor:pointer;
   border:1px #c7c7c7 solid;
+}
+#code-area-track{
+	all:initial;
+  position:relative;
+  left:5px;
+  top:1px;
+  font-size:13px;
+  font-weight:1000;
+  color:#58b3fc;
+  font-family: 'Source Code Pro', monospace;
+}
+#code-area-container{
+	width:100%;
 }
 #console::-webkit-scrollbar{
    width: 10px;
@@ -105,11 +109,17 @@ function createUI(){
   container.id="console";
   container.style.width=document.body.clientWidth*0.25+"px";
   document.body.appendChild(container);
+  let codeAreaContainer=document.createElement("div");
+  codeAreaContainer.id="code-area-container";
   let codeArea=document.createElement("textArea");
   codeArea.id="codearea";
-  codeArea.placeholder="input code here...";
   codeArea.onkeypress="if(event.keyCode==13){if(event.shiftKey==true){event.returnValue=true}else{event.returnValue=false}}";
-  container.appendChild(codeArea);
+  let codeAreaTrack=document.createElement("span");
+  codeAreaTrack.textContent=">";
+  codeAreaTrack.id="code-area-track";
+  codeAreaContainer.appendChild(codeAreaTrack);
+  codeAreaContainer.appendChild(codeArea);
+  container.appendChild(codeAreaContainer);
   codeArea.focus()
   let close=document.createElement("span");
   close.innerText="X";
@@ -146,7 +156,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
       let logArea = document.getElementById('console'),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-      document.getElementById("codearea").before(codeLog);
+      document.getElementById("code-area-container").before(codeLog);
       let scriptCode=document.createElement("script");
       scriptCode.textContent=code2;
       document.body.appendChild(scriptCode);
@@ -165,7 +175,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
     let logArea = document.getElementById('console'),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-    document.getElementById("codearea").before(li);
+    document.getElementById("code-area-container").before(li);
     if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
@@ -181,7 +191,7 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
     let logArea = document.getElementById('console'),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-    document.getElementById("codearea").before(li);
+    document.getElementById("code-area-container").before(li);
     if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
@@ -193,11 +203,11 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
     warn(...args);
     var li = document.createElement('div');
     li.textContent=args[0];
-    li.setAttribute("class","consoleerror");
+    li.setAttribute("class","consolewarn");
     let logArea = document.getElementById('console'),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-    document.getElementById("codearea").before(li);
+    document.getElementById("code-area-container").before(li);
     if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
       	logArea.scrollTop = logAreaHeight;
       }
