@@ -183,6 +183,22 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
       }
   }
 })();
+	(function(){
+  const warn = console.warn;
+  console.warn = function(...args){
+    warn(...args);
+    var li = document.createElement('div');
+    li.textContent=args[0];
+    li.setAttribute("class","consoleerror");
+    let logArea = document.getElementById('console'),
+     	logAreaHeight = logArea.scrollHeight,
+      logAreaTop = logArea.scrollTop;
+    document.getElementById("codearea").before(li);
+    if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
+      	logArea.scrollTop = logAreaHeight;
+      }
+  }
+})();
 window.onerror = function(message, source, lineno, colno, error) {
 	console.error(error)
 }
