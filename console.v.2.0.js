@@ -56,10 +56,11 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   font-size:13px;
 }
 .consoleerror{
-  background-color:#ffa1a1;
+  background-color:#fef0f0;
+  color:#f5001b;
 }
 .consolewarn{
-  background-color:#fffca1;
+  background-color:#fefbe6;
 }
 .codelog{
   opacity:1;
