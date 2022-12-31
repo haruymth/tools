@@ -64,6 +64,9 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
 }
 .codelog{
   opacity:1;
+  float:left;
+  padding-left:0;
+  border-bottom:0;
 }
 #closeButton{
 	all:initial;
@@ -81,18 +84,25 @@ style.textContent=`@import url('https://fonts.googleapis.com/css2?family=Source+
   cursor:pointer;
   border:1px #c7c7c7 solid;
 }
-#code-area-track{
+#code-area-track,.log-area-track{
 	all:initial;
   position:relative;
   left:5px;
   top:1px;
-  font-size:13px;
+  font-size:12px;
   font-weight:1000;
   color:#58b3fc;
   font-family: 'Source Code Pro', monospace;
 }
-#code-area-container{
+.log-area-track{
+	color:#a8a8a8;
+}
+#code-area-container,.log-area-container{
 	width:100%;
+  display:flex;
+}
+.log-area-container{
+  border-bottom:1px #c7c7c7 solid;
 }
 #console::-webkit-scrollbar{
    width: 10px;
@@ -151,13 +161,21 @@ textareaEl.setAttribute("style", `height: ${textareaEl.scrollHeight}px;`);
     let code2="{"+document.getElementById("codearea").value+"}"
       document.getElementById("codearea").value="";
       document.getElementById("codearea").style.height="auto";
+      let logAreaContainer=document.createElement("div");
+      logAreaContainer.setAttribute("class","log-area-container");
+      let logAreaTrack=document.createElement("span");
+  logAreaTrack.textContent=">";
+  logAreaTrack.setAttribute("class","log-area-track");
+  logAreaContainer.appendChild(logAreaTrack);
       let codeLog=document.createElement("div");
       codeLog.setAttribute("class","codelog");
       codeLog.innerText=code;
+      
+  logAreaContainer.appendChild(codeLog);
       let logArea = document.getElementById('console'),
      	logAreaHeight = logArea.scrollHeight,
       logAreaTop = logArea.scrollTop;
-      document.getElementById("code-area-container").before(codeLog);
+      document.getElementById("code-area-container").before(logAreaContainer);
       let scriptCode=document.createElement("script");
       scriptCode.textContent=code2;
       document.body.appendChild(scriptCode);
