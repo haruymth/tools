@@ -22,7 +22,7 @@
     overflow-x: hidden;
     position:fixed;
     direction: rtl;
-    color:#ffffff;
+    color:#000000;
   }
   #console * {
     direction: ltr;
