@@ -1,6 +1,7 @@
 # tools
 jsとかで作ったツールを公開してます。
-ここにあってスクリプト配布のところにないやつとか、スクリプト配布のところにあってここにないやつとかあるので気をつけてね
+ここにあってスクリプト配布のところにないやつとか、スクリプト配布のところにあってここにないやつとかあるので気をつけてね  
+多分スクリプト配布のところにほぼ全部移す
 
 ## console.js
 僕は開発の殆どを学校PCでやっているので開発者ツールを使うときだけ家のWindowsでやってますなので不便なのでブックマークレットでコンソールを使えるようにすればいいじゃないかと思いついてつくってます.
@@ -23,7 +24,7 @@ javascript:{let aa=document.createElement("script");aa.src="https://haruymth.git
 ブックマークレットです。非共有の自分のプロジェクトをTurbowarpで見れるようにするやつです。  
 自動でproject_tokenとか取ってTurbowarpに飛んでくれます。
 ```js
-javascript:{let aa=document.createElement("script");aa.src="https://haruymth.github.io/tools/じjumpToTurbowarp.js";document.body.appendChild(aa);}
+javascript:{let aa=document.createElement("script");aa.src="https://haruymth.github.io/tools/jumpToTurbowarp.js";document.body.appendChild(aa);}
 ```
 
 ## kidoku.js
