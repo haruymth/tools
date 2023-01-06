@@ -86,6 +86,7 @@
     user-select:none;
     cursor:pointer;
     border:1px #c7c7c7 solid;
+    color:#000000;
   }
   #code-area-track,.log-area-track{
     all:initial;
