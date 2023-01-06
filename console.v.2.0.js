@@ -27,7 +27,6 @@
   #console * {
     direction: ltr;
     overflow-wrap:  break-word;
-    color:#000000;
   }
   #codearea{
     all:initial;
@@ -97,6 +96,7 @@
     font-weight:1000;
     color:#58b3fc;
     font-family: 'Source Code Pro', monospace;
+    user-select:none;
   }
   .log-area-track{
     color:#a8a8a8;
