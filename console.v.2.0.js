@@ -57,6 +57,7 @@
     opacity:0.8;
     font-size:13px;
     color:#000000;
+    min-height:16px;
   }
   .consoleerror{
     background-color:#fef0f0;
