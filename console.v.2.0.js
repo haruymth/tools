@@ -244,6 +244,26 @@
         }
     };
   })();
+  (function(){
+    const clear = console.clear;
+    console.clear = function(...args){
+      clear(...args);
+      const container=document.getElementById("console");
+      container.innerHTML="";
+      let codeAreaContainer=document.createElement("div");
+    codeAreaContainer.id="code-area-container";
+    let codeArea=document.createElement("textArea");
+    codeArea.id="codearea";
+    codeArea.onkeypress="if(event.keyCode==13){if(event.shiftKey==true){event.returnValue=true}else{event.preventDefault();}}";
+    let codeAreaTrack=document.createElement("span");
+    codeAreaTrack.textContent=">";
+    codeAreaTrack.id="code-area-track";
+    codeAreaContainer.appendChild(codeAreaTrack);
+    codeAreaContainer.appendChild(codeArea);
+    container.appendChild(codeAreaContainer);
+    codeArea.focus();
+    };
+  })();
   window.onerror = function(message, source, lineno, colno, error) {
     console.error(error);
   };
