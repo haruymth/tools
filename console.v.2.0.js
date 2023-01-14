@@ -29,6 +29,7 @@
     overflow-wrap:  break-word;
   }
   #codearea{
+    word-break: break-all;
     all:initial;
     resize: none;
     position:absolute;
@@ -45,6 +46,7 @@
     color:#000000;
   }
   .consolelog,.consoleerror,.consolewarn,.codelog{
+    word-break: break-all;
     all:initial;
     display:block;
     padding-left:15px;
