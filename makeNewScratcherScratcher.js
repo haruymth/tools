@@ -105,7 +105,7 @@ try {
         });
         printStatus(comment.status,"でなんかのプロジェクトにコメントしたよ","でなんかのプロジェクトにコメントできなかったよ");
         let follow=await fetch(`https://scratch.mit.edu/site-api/users/followers/${trend[j].author.username}/add/?usernames=${userList[i]}`,{
-            method:"POST",
+            method:"PUT",
             headers:{
                 "x-csrftoken":getCookieArray(),
                 "x-requested-with": "XMLHttpRequest"
