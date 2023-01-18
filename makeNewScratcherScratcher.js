@@ -24,6 +24,13 @@ try {
         var token = memo['scratchcsrftoken'];
         return token
     }
+    function printStatus(status,success,faild){
+        if (status == 200) {
+            console.log(`${userList[i]}${success}${i + 1}人目`);
+        } else {
+            console.error(`${userList[i]}${faild}${i + 1}人目 ステータスコード：${status}`);
+        }
+    }
     let token = getCookieArray();
     
     await fetch("https://scratch.mit.edu/accounts/logout/", { method: "POST", "headers": { "x-csrftoken": token } });
@@ -51,86 +58,61 @@ try {
             body: JSON.stringify({"targets":[{"isStage":true,"name":"Stage","variables":{"`jEk@4|i[#Fk?(8x)AV.-my variable":["変数",0]},"lists":{},"broadcasts":{},"blocks":{},"comments":{},"currentCostume":0,"costumes":[{"name":"背景1","dataFormat":"svg","assetId":"cd21514d0531fdffb22204e0ec5ed84a","md5ext":"cd21514d0531fdffb22204e0ec5ed84a.svg","rotationCenterX":240,"rotationCenterY":180}],"sounds":[{"name":"ポップ","assetId":"83a9787d4cb6f3b7632b4ddfebf74367","dataFormat":"wav","format":"","rate":48000,"sampleCount":1123,"md5ext":"83a9787d4cb6f3b7632b4ddfebf74367.wav"}],"volume":100,"layerOrder":0,"tempo":60,"videoTransparency":50,"videoState":"on","textToSpeechLanguage":null},{"isStage":false,"name":"スプライト1","variables":{},"lists":{},"broadcasts":{},"blocks":{},"comments":{},"currentCostume":0,"costumes":[{"name":"コスチューム1","bitmapResolution":1,"dataFormat":"svg","assetId":"017b3be004d334b13b2d18e0df70ec7a","md5ext":"017b3be004d334b13b2d18e0df70ec7a.svg","rotationCenterX":96.27265286574638,"rotationCenterY":-15.392285266467525}],"sounds":[{"name":"ニャー","assetId":"83c36d806dc92327b9e7049a565c6bff","dataFormat":"wav","format":"","rate":48000,"sampleCount":40681,"md5ext":"83c36d806dc92327b9e7049a565c6bff.wav"}],"volume":100,"layerOrder":1,"visible":true,"x":0,"y":0,"size":100,"direction":90,"draggable":false,"rotationStyle":"all around"}],"monitors":[],"extensions":[],"meta":{"semver":"3.0.0","vm":"1.3.14","agent":"Mozilla/5.0 (X11; CrOS x86_64 15183.78.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"}}),
             credentials:"include"
         });
-        if (makeproject.status == 200) {
-            console.log(`${userList[i]}のプロジェクトを作成したよ${i + 1}人目`);
-        } else {
-            console.error(`${userList[i]}のプロジェクトを作成できなかったよ${i + 1}人目`);
-        }
+        printStatus(makeproject.status,"でプロジェクトを作成したよ","でプロジェクトを作成できなかったよ")
         let projectID=(await makeproject.json())["content-name"];
-        console.log("a")
         let shareProject=await fetch(`https://api.scratch.mit.edu/proxy/projects/${projectID}/share`,{
             method:"PUT",
             headers:{
-                "x-csrftoken":token,
+                "x-csrftoken":getCookieArray(),
                 "x-token":xtoken
-            }
+            },
             credentials:"include"
         });
-        console.log("a")
-        console.log(shareProject.status)
-        if (shareProject.status == 200) {
-            console.log(`${userList[i]}のプロジェクトを共有したよ${i + 1}人目`)
-        } else {
-            console.error(`${userList[i]}のプロジェクトを共有できなかったよ${i + 1}人目`)
-        }
+        printStatus(shareProject.status,"のプロジェクトを共有したよ","のプロジェクトを共有できなかったよ");
         let love=await fetch(`https://api.scratch.mit.edu/proxy/projects/${trend[j].id}/loves/user/${userList[i]}`,{
             method:"POST",
             headers:{
-                "x-csrftoken":token,
+                "x-csrftoken":getCookieArray(),
                 "x-token":xtoken,
                 "x-requested-with": "XMLHttpRequest"
             },
             credentials:"include"
         });
-        if (love.status == 200) {
-            console.log(`${userList[i]}でなんかのプロジェクトに♡をつけたよ${i + 1}人目`);
-        } else {
-            console.error(`${userList[i]}でなんかのプロジェクトに♡をつけれなかったよ${i + 1}人目`);
-        }
+        printStatus(love.status,"でなんかのプロジェクトに♡をつけたよ","でなんかのプロジェクトに♡をつけれなかったよ");
         let favorite=await fetch(`https://api.scratch.mit.edu/proxy/projects/${trend[j].id}/favorites/user/${userList[i]}`,{
             method:"POST",
             headers:{
-                "x-csrftoken":token,
+                "x-csrftoken":getCookieArray(),
                 "x-token":xtoken,
                 "x-requested-with": "XMLHttpRequest"
             },
             credentials:"include"
         });
-        if (favorite.status == 200) {
-            console.log(`${userList[i]}でなんかのプロジェクトに☆をつけたよ${i + 1}人目`);
-        } else {
-            console.error(`${userList[i]}でなんかのプロジェクトに☆をつけれなかったよ${i + 1}人目`);
-        }
+        printStatus(favorite.status,"でなんかのプロジェクトに☆をつけたよ","でなんかのプロジェクトに☆をつけれなかったよ");
         let comment=await fetch(`https://api.scratch.mit.edu/proxy/comments/project/${projectID}`,{
             method:"POST",
             headers:{
-                "x-csrftoken":token,
-                "x-token":xtoken
+                "x-csrftoken":getCookieArray(),
+                "x-token":xtoken,
+                "content-type":"application/json"
             },
             body:JSON.stringify({
-                content:"I think this project is so amazing! I'll follow you!"+"!".repeat(Math.floor(Math.random()*100)),
+                content:"I think this project is so amazing! I'll follow you!"+"!".repeat(Math.floor(Math.random()*10)),
                 parent_id:"",
                 commentee_id:""
-            })
+            }),
+            credentials:"include"
         });
-        if (comment.status == 200) {
-            console.log(`${userList[i]}でなんかのプロジェクトにコメントしたよ${i + 1}人目`);
-        } else {
-            console.error(`${userList[i]}でなんかのプロジェクトにコメントできなかったよ${i + 1}人目`);
-        }
+        printStatus(comment.status,"でなんかのプロジェクトにコメントしたよ","でなんかのプロジェクトにコメントできなかったよ");
         let follow=await fetch(`https://scratch.mit.edu/site-api/users/followers/${trend[j].author.username}/add/?usernames=${userList[i]}`,{
             method:"POST",
             headers:{
-                "x-csrftoken":token,
+                "x-csrftoken":getCookieArray(),
                 "x-requested-with": "XMLHttpRequest"
             },
             credentials:"include"
         });
-        if (follow.status == 200) {
-            console.log(`${userList[i]}でなんか適当に人フォローしたよ${i + 1}人目`);
-        } else {
-            console.error(`${userList[i]}でなんか適当に人フォローできなかったよ${i + 1}人目`);
-        }
+        printStatus(follow.status,"でなんか適当に人フォローしたよ","でなんか適当に人フォローできなかったよ");
     }
     }
     var sound = new Audio('https://soundeffect-lab.info/sound/anime/mp3/shakin1.mp3');
