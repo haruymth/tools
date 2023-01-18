@@ -62,11 +62,8 @@ try {
             method:"PUT",
             headers:{
                 "x-csrftoken":token,
-                "x-token":xtoken,
-                "x-requested-with": "XMLHttpRequest",
-                "content-type":"application/json"
-            },
-            body : JSON.stringify({is_published:"true"}),
+                "x-token":xtoken
+            }
             credentials:"include"
         });
         console.log("a")
