@@ -190,9 +190,13 @@
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
         document.getElementById("code-area-container").before(logAreaContainer);
+        /*
         let scriptCode=document.createElement("script");
         scriptCode.textContent=code2;
         document.body.appendChild(scriptCode);
+        */
+        const func=new Function(code2);
+        func();
         if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
         }
