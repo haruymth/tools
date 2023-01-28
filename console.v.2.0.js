@@ -165,7 +165,7 @@
     	if(!e.shiftKey && e.key === 'Enter'){
         e.preventDefault();
       }
-    })
+    });
     document.addEventListener("keyup",keyPress);
     function keyPress(e){
       if(!e.shiftKey && e.key === 'Enter'){
