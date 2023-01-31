@@ -196,7 +196,7 @@
         document.body.appendChild(scriptCode);
         /*/
         const func=new Function(code2);
-        func()
+        func();
         if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
         }
