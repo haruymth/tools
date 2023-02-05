@@ -175,7 +175,6 @@
       if(!code)return;
       let code2="{"+document.getElementById("codearea").value+"}";
         document.getElementById("codearea").value="";
-        document.getElementById("codearea").style.height="auto";
         let logAreaContainer=document.createElement("div");
         logAreaContainer.setAttribute("class","log-area-container");
         let logAreaTrack=document.createElement("span");
@@ -198,9 +197,11 @@
         /*/
         const func=new Function(code2);
         func();
-        if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
+        console.log((logAreaHeight-logAreaTop)-logArea.offsetHeight)
+        //if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
-        }
+        //}
+        document.getElementById("codearea").style.height="auto";
       }
     }
     (function(){
@@ -214,7 +215,7 @@
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
       document.getElementById("code-area-container").before(li);
-      if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
+      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
         }
     };
@@ -230,7 +231,7 @@
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
       document.getElementById("code-area-container").before(li);
-      if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
+      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
         }
     };
@@ -246,7 +247,7 @@
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
       document.getElementById("code-area-container").before(li);
-      if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
+      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
         }
     };
