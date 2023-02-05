@@ -23,6 +23,7 @@
     position:fixed;
     direction: rtl;
     color:#000000;
+    user-select:initial;
   }
   #console * {
     direction: ltr;
