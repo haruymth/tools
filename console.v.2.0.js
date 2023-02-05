@@ -194,9 +194,10 @@
         let scriptCode=document.createElement("script");
         scriptCode.textContent=code2;
         document.body.appendChild(scriptCode);
-        /*/
+        
         const func=new Function(code2);
-        func();
+        func();*/
+        console.log(eval(code2))
         if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
         }
