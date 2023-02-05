@@ -197,10 +197,9 @@
         /*/
         const func=new Function(code2);
         func();
-        console.log((logAreaHeight-logAreaTop)-logArea.offsetHeight)
-        //if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
+        if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
-        //}
+        }
         document.getElementById("codearea").style.height="auto";
       }
     }
