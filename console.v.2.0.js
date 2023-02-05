@@ -198,7 +198,7 @@
         /*/
         const func=new Function(code2);
         func();
-        if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
+        if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
           logArea.scrollTop = logAreaHeight;
         }
       }
@@ -214,7 +214,7 @@
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
       document.getElementById("code-area-container").before(li);
-      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
+      if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
           logArea.scrollTop = logAreaHeight;
         }
     };
@@ -230,7 +230,7 @@
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
       document.getElementById("code-area-container").before(li);
-      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
+      if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
           logArea.scrollTop = logAreaHeight;
         }
     };
@@ -246,7 +246,7 @@
          logAreaHeight = logArea.scrollHeight,
         logAreaTop = logArea.scrollTop;
       document.getElementById("code-area-container").before(li);
-      if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
+      if(/*Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16*/true){
           logArea.scrollTop = logAreaHeight;
         }
     };
