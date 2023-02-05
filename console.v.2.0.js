@@ -122,6 +122,10 @@
   #console::-webkit-scrollbar-thumb{
      background-color: #7d7d7d;
      opacity:0.5;
+  }
+  .consolelog,.consoleerror,.consolewarn,.codelog:empty::before {
+  content: "undefined";
+  color: gray;
   }`;
   document.body.appendChild(style);
   function createUI(){
