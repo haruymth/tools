@@ -114,12 +114,15 @@
     border-bottom:1px #c7c7c7 solid;
   }
   #console::-webkit-scrollbar{
+    all:initial;
      width: 10px;
   }
   #console::-webkit-scrollbar-track{
+    all:initial;
      background-color: #c7c7c7;
   }
   #console::-webkit-scrollbar-thumb{
+    all:initial;
      background-color: #7d7d7d;
      opacity:0.5;
   }}`;
