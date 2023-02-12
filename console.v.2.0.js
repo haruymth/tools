@@ -28,6 +28,7 @@
   #console * {
     direction: ltr;
     overflow-wrap:  break-word;
+    user-select:initial;
   }
   #codearea{
     word-break: break-all;
@@ -61,6 +62,7 @@
     font-size:13px;
     color:#000000;
     min-height:16px;
+    user-select:initial;
   }
   .consoleerror{
     background-color:#fef0f0;
