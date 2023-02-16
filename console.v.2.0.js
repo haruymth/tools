@@ -178,7 +178,7 @@
         e.preventDefault();
         let code=document.getElementById("codearea").value.trim();
       if(!code)return;
-      let code2="{"+document.getElementById("codearea").value+"}";
+      let code2=document.getElementById("codearea").value;
         document.getElementById("codearea").value="";
         let logAreaContainer=document.createElement("div");
         logAreaContainer.setAttribute("class","log-area-container");
@@ -202,7 +202,9 @@
         
         const func=new Function(code2);
         func();*/
-        console.log(eval(code2));
+        (()=>{
+          console.log(eval(code2));
+        })();
         if(Math.abs((logAreaHeight-logAreaTop)-logArea.offsetHeight)<16){
           logArea.scrollTop = logAreaHeight;
         }
