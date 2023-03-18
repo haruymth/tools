@@ -225,10 +225,10 @@
     }
     
   window.onerror = function(message, source, lineno, colno, error) {
-      console.error(`${message}\n\t${source}:${lineno}:${colno}`);
+      console.error(error.stack);
   };
   window.addEventListener("unhandledrejection", function (event) {
-  console.error(`${event.reason}`)
+  console.error(event.stack)
 });
     (function(){
     const log = console.log;
